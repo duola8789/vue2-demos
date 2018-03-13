@@ -1,0 +1,12 @@
+/build/
+/config/
+/dist/
+/*.js
+/test/unit/coverage/
+node_modules/
+/.idea/
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
