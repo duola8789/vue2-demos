@@ -4,22 +4,34 @@
 			<li>
 				<router-link to="/" exact>Home</router-link>
 			</li>
-			<li>
-				<router-link to="/demo1">Demo-01</router-link>
-			</li>
-			<li>
-				<router-link to="/demo2">Demo-02</router-link>
+			<li v-for="demo of demos" :key="demo">
+				<router-link :to="`demo${demo}`">Demo-0{{demo}}</router-link>
 			</li>
 		</ul>
 		<div class="content">
-			<router-view />
+			<router-view/>
 		</div>
 	</div>
 </template>
 
 <script>
+	const DEMO_NUMBER = 7;
 	export default {
-		name: 'App'
+		name: 'App',
+		data: function () {
+			return {
+				demos: DEMO_NUMBER
+			}
+		},
+		methods: {
+			getDemoArray(){
+				let arr = [];
+				for (let i = 0; i < DEMO_NUMBER; i++) {
+					arr.push(i + 1)
+				}
+				return arr;
+			}
+		}
 	}
 </script>
 
@@ -29,7 +41,6 @@
 		padding: 0;
 	}
 	html, body {
-		overflow: hidden;
 		margin: 0;
 		padding: 0;
 		width: 100%;
@@ -55,15 +66,16 @@
 	}
 	.nav {
 		border-right: 1px solid gray;
-		padding: 40px 0 0 15px;
-		width: 100px;
+		padding: 50px 0 0 15px;
+		width: 120px;
 		flex-shrink: 0;
+		overflow-y: auto;
 	}
 	.nav li {
 		margin: 20px 0;
 	}
 	.content {
-		width: 85%;
+		width: 800px;
 		min-width: 500px;
 		padding: 50px 0;
 	}
@@ -72,5 +84,40 @@
 	}
 	.router-link-active {
 		color: #42b983;
+	}
+	button {
+		background: floralwhite;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: none;
+		border: 1px solid olive;
+		padding: 5px;
+		margin: 10px 0;
+		border-radius: 4px;
+	}
+	h1 {
+		font-size: 36px;
+		font-weight: bold;
+		color: darkkhaki;
+	}
+	p {
+		margin: 10px 0;
+	}
+	.title {
+		display: inline-block;
+		width: 150px;
+		margin-right: 15px;
+		color: crimson;
+	}
+	.item {
+		width: 400px;
+		margin: 10px auto;
+		padding-left: 20px;
+		text-align: left;
+	}
+	.item-explain {
+		color: gray;
+		font-style: italic;
 	}
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-		<p :class="class1">{{message}}</p>
+		<h1 :class="class1">{{message}}</h1>
 		<button @click="changeSeen" class="click-btn">{{seenText}}</button>
 		<span v-if="seen">v-if绑定</span>
 		<section></section>
@@ -9,14 +9,14 @@
 		</p>
 		<label><input v-model="inputValue"></label>
 		<p>输入框中输入的内容是{{inputValue}}</p>
-		<demo2 :betweenValue="fatherValue"></demo2>
+		<demo1_1 :betweenValue="fatherValue"></demo1_1>
 		<todo-Item betweenValue2="hello"></todo-Item>
 	</div>
 </template>
 
 <script>
-	import demo2 from '@/components/demos/demo2';
-	const MESSAGE = 'This is demo 1',
+	import demo1_1 from '@/components/demos/demo1-1';
+	const MESSAGE = 'This is demo 1 -- 基础',
 		HIDE_TEXT = 'Hide text right',
 		SHOW_TEXT = 'Show text right';
 	const TEXTS = [
@@ -47,10 +47,10 @@
 			}
 		},
 		components: {
-			demo2,
+			demo1_1,
 			todoItem: {
 				props: ['betweenValue2'],
-				template: '<p>this is a inside component --- {{betweenValue2}}</p>'
+				template: '<p>This is a inside component --- {{betweenValue2}}</p>'
 			}
 		}
 	}
@@ -63,10 +63,6 @@
 	}
 	.main p {
 		margin: 10px 0;
-	}
-	.text {
-		font-size: 16px;
-		color: darkkhaki;
 	}
 	.click-btn {
 		background: floralwhite;

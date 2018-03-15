@@ -25,3 +25,13 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## 文件说明
+
+- demo1：基础
+- demo2：实例方法和模版
+- demo3：计算属性和方法
+- demo4：侦听器 + deferred + debounce
+- demo5：绑定class 和条件渲染
+- demo6：列表渲染
+- demo7：todoList
