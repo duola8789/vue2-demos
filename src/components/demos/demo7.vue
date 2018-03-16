@@ -21,7 +21,7 @@
 			</li>
 		</ul>
 		<ul class="finished-container" v-if="finishedList.length > 0">
-			<li	v-for="(todo, index) of finishedList" :key="todo.content + 'f'" class="finished-todo">
+			<li v-for="(todo, index) of finishedList" :key="todo.content + 'f'" class="finished-todo">
 				{{index + 1}}. {{todo.content}}
 			</li>
 		</ul>
@@ -45,7 +45,8 @@
 			}
 		},
 		methods: {
-			addTodo(){
+			addTodo(event){
+				console.log(event);
 				if (!this.newTodo) {
 					alert('请输入内容');
 					return;
@@ -83,17 +84,17 @@
 		margin: 30px auto;
 		border-bottom: 5px solid gray;
 	}
-	.finished-container{
+	.finished-container {
 		width: 500px;
 		margin: 30px auto;
 	}
-	.finished-todo{
+	.finished-todo {
 		margin: 10px 0;
 		padding-bottom: 5px;
 		font-size: 20px;
 		border-bottom: 1px dashed cornflowerblue;
 	}
-	.finished-todo:last-child{
+	.finished-todo:last-child {
 		border-bottom: none
 	}
 </style>

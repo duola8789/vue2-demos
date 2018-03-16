@@ -35,3 +35,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo5：绑定class 和条件渲染
 - demo6：列表渲染
 - demo7：todoList
+- demo8：表单输入
