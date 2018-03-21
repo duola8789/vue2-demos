@@ -36,3 +36,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo6：列表渲染
 - demo7：todoList
 - demo8：表单输入
+- demo9：Mock.js
+

@@ -4,6 +4,9 @@ module.exports = {
     "amd": true,
     "jquery": true
   },
+  parserOptions:{
+    "ecmaVersion": 8,
+  },
   "extends": [
     "plugin:vue/essential"
   ],
@@ -52,6 +55,8 @@ module.exports = {
     // 建议使用单引号
     "quotes": [1, "single"],
     // 建议注释符要有空白隔开
-    "spaced-comment": [1, "always"]
+    "spaced-comment": [1, "always"],
+    // allow async-await
+    'generator-star-spacing': 0,
   }
 };
