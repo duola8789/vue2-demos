@@ -7,6 +7,7 @@ import store from './store';
 import './mock'
 
 Vue.config.productionTip = false;
+Vue.prototype.$eventBus = Vue.prototype.$eventBus ||  new Vue();
 
 /* eslint-disable no-new */
 new Vue({

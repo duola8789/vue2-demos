@@ -17,7 +17,6 @@ Mock.Random.extend({
 let template = {
   'key|1-10': '★'
 };
-console.log(Mock.toJSONSchema(template));
 
 Mock.mock(new RegExp(USER_API.getUser), 'get', {
   user: {
