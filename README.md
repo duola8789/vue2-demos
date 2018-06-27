@@ -38,4 +38,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo8：表单输入
 - demo9：Mock.js
 - demo10：事件总线
+- demo11：文字滚动
 
