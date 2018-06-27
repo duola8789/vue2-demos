@@ -5,7 +5,6 @@
       <LeftChild class="child"></LeftChild>
       <RightChild class="child"></RightChild>
     </div>
-
 	</div>
 </template>
 

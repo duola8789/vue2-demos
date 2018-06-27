@@ -15,7 +15,7 @@
 </template>
 
 <script>
-	const DEMO_NUMBER = 10;
+	const DEMO_NUMBER = 11;
   export default {
     name: 'App',
     data: function () {
@@ -57,7 +57,7 @@
     color: #2c3e50;
     display: flex;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
   }
   h1, h2 {
     font-weight: normal;
@@ -69,10 +69,9 @@
   }
   .nav {
     border-right: 1px solid gray;
-    padding: 50px 0 0 15px;
+    padding: 50px 0 0 40px;
     width: 120px;
     flex-shrink: 0;
-    overflow-y: auto;
   }
   .nav li {
     margin: 20px 0;
