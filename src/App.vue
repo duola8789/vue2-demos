@@ -15,7 +15,7 @@
 </template>
 
 <script>
-	const DEMO_NUMBER = 11;
+	const DEMO_NUMBER = 12;
   export default {
     name: 'App',
     data: function () {

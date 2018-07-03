@@ -43,8 +43,13 @@
 				seen: true,
 				textArray: TEXTS,
 				inputValue: '',
-				fatherValue: {message : '父组件传给子组件的信息'}
+				fatherValue: {message : '父组件传给子组件的信息'},
+				test: ''
 			}
+		},
+		mounted() {
+			console.log(this.test, '-----------------');
+			this.test = 123;
 		},
 		computed: {
 			seenText(){
