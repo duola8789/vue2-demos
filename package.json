@@ -10,14 +10,13 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
-  },
-  "dependencies": {
-    "element-ui": "^2.4.3",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "build": "node build/build.js",
+    "dll": "webpack -p --progress --config build/webpack.dll.config.js"
   },
   "devDependencies": {
+    "element-ui": "^2.4.3",
+    "vue": "^2.5.2",
+    "vue-router": "^3.0.1",
     "autoprefixer": "^7.1.2",
     "axios": "^0.18.0",
     "babel-core": "^6.22.1",
