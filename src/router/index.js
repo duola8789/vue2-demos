@@ -13,6 +13,7 @@ import demo9 from '@/components/demos/demo9/demo9';
 import demo10 from '@/components/demos/demo10/demo10';
 import demo11 from '@/components/demos/demo11';
 import demo12 from '@/components/demos/demo12';
+import demo13 from '@/components/demos/demo13';
 
 Vue.use(Router);
 
@@ -22,33 +23,27 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
-    },
-		{
+    }, {
 			path: '/demo1',
 			name: 'demo1',
 			component: demo1
-		},
-		{
+		}, {
 			path: '/demo2',
 			name: 'demo2',
 			component: demo2
-		},
-		{
+		}, {
 			path: '/demo3',
 			name: 'demo3',
 			component: demo3
-		},
-		{
+		}, {
 			path: '/demo4',
 			name: 'demo4',
 			component: demo4
-		},
-		{
+		}, {
 			path: '/demo5',
 			name: 'demo5',
 			component: demo5
-		},
-		{
+		}, {
 			path: '/demo6',
 			name: 'demo6',
 			component: demo6
@@ -57,31 +52,30 @@ export default new Router({
 			path: '/demo7',
 			name: 'demo7',
 			component: demo7
-		},
-		{
+		}, {
 			path: '/demo8',
 			name: 'demo8',
 			component: demo8
-		},
-		{
+		}, {
 			path: '/demo9',
 			name: 'demo9',
 			component: demo9
-		},
-    {
+		}, {
       path: '/demo10',
       name: 'demo10',
       component: demo10
-    },
-    {
+    }, {
       path: '/demo11',
       name: 'demo11',
       component: demo11
-    },
-    {
+    }, {
       path: '/demo12',
       name: 'demo12',
       component: demo12
+    }, {
+      path: '/demo13',
+      name: 'demo13',
+      component: demo13
     }
   ]
 })

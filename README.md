@@ -39,4 +39,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo9：Mock.js
 - demo10：事件总线
 - demo11：文字滚动
+- demo12：ElementUI 表格展开
+- demo13：动态创建弹框
 
