@@ -9,18 +9,22 @@
 			</li>
 		</ul>
 		<div class="content">
-			<router-view/>
+			<router-view :identity="identity"/>
 		</div>
 	</div>
 </template>
 
 <script>
-	const DEMO_NUMBER = 14;
+	const DEMO_NUMBER = 15;
   export default {
     name: 'App',
     data: function () {
       return {
         demos: DEMO_NUMBER,
+        identity: {
+          id: 123,
+          role: 123,
+        }
       }
     },
     methods: {

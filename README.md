@@ -42,5 +42,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo12：ElementUI 表格展开
 - demo13：动态创建弹框
 - demo14：动态组件和ElementUI的tabs
+- demo15：ElementUI分页组件
 
 

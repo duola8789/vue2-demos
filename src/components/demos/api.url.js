@@ -7,3 +7,8 @@ export const USER_API = {
 export const GROUP_API = {
   list: '/list'
 };
+
+export const DEMO15_API = {
+  result: '/demo15/result',
+  detail: '/demo15/detail'
+};
