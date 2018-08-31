@@ -29,7 +29,15 @@
         <img class="img" :src="previewImg.src">
         <div class="filter" v-if="uploading">
           <div class="loader"></div>
-          <div class="loader-cover"></div>
+          <div class="right"  v-if="progress < 50">
+            <div class="loader-cover-right" :style="{'transform': `rotate(${45}deg)`}">
+            </div>
+          </div>
+          <div class="left"  v-else>
+            <div class="loader-cover-left"
+                 :style="{'transform': `translate(-50%, -50%) rotate(${-135}deg)`}">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -195,20 +203,38 @@
     transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
-    /*background: red;*/
-
     border: 10px solid lavenderblush;
   }
-  .loader-cover {
+  .right {
     position: absolute;
     left: 50%;
     top:50%;
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-100%, -50%);
+    width: 50px;
+    height: 100px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .loader-cover-right {
+    width: 100px;
+    height: 100px;
+    border: 10px solid red;
+    border-top:10px solid green;
+    border-right:10px solid green;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  /* TODO: 总结一下*/
+  .loader-cover-left {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%) rotate(-135deg);
     width: 100px;
     height: 100px;
     border: 10px solid transparent;
-    border-top:10px solid green;
-    border-right:10px solid green;
+    border-top:10px solid red;
+    border-right:10px solid red;
     border-radius: 50%;
   }
 </style>
