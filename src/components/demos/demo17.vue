@@ -28,16 +28,28 @@
       <div class="grid-item4 grid-item">
         <img class="img" :src="previewImg.src">
         <div class="filter" v-if="uploading">
-          <div class="loader"></div>
-          <div class="right"  v-if="progress < 50">
-            <div class="loader-cover-right" :style="{'transform': `rotate(${45}deg)`}">
+          <div class="loader">
+            <div class="loader-bg">
+              <p class="progress-text progress-text-center">{{progressText}}</p>
+            </div>
+            <div class="loader-container">
+              <div class="loader-circle loader-left-circle" :style="{'transform': `rotate(${leftAngel}deg)`}"></div>
+            </div>
+            <div class="loader-container">
+              <div class="loader-circle loader-right-circle" :style="{'transform': `rotate(${rightAngel}deg)`}"></div>
             </div>
           </div>
-          <div class="left"  v-else>
-            <div class="loader-cover-left"
-                 :style="{'transform': `translate(-50%, -50%) rotate(${-135}deg)`}">
-            </div>
-          </div>
+        </div>
+      </div>
+    </div>
+    <div class="outer">
+      <div class="loader">
+        <div class="loader-bg"></div>
+        <div class="loader-container">
+          <div class="loader-circle loader-left-circle loader-left-circle-animation"></div>
+        </div>
+        <div class="loader-container">
+          <div class="loader-circle loader-right-circle loader-right-circle-animation"></div>
         </div>
       </div>
     </div>
@@ -46,8 +58,12 @@
 
 <script>
   import axios from 'axios'
+  import Cookie from 'js-cookie'
 
-	export default {
+  // TODO: 1上传token
+  // TODO: 2总结
+
+  export default {
     data() {
       return {
         progressRatio: 0,
@@ -60,11 +76,19 @@
       uploading() {
         return this.previewImg.src && !this.uploadFinish
       },
-      progress () {
+      progress() {
         return Math.round(this.max * this.progressRatio)
       },
       progressText() {
-        return this.progress ? this.progress + '%': '0'
+        return this.progress ? this.progress + '%' : '0'
+      },
+      rightAngel() {
+        const endAngel = 45;
+        return this.progress > 50 ? endAngel : -135 + 360 * this.progress * 0.01
+      },
+      leftAngel() {
+        const startDeg = -135;
+        return this.progress < 50 ? startDeg : startDeg + (this.progress * 0.01 - 0.5) * 360
       }
     },
     methods: {
@@ -79,7 +103,8 @@
       },
 
       resetStatus() {
-        this.uploadFinish = false
+        this.uploadFinish = false;
+        this.progressRatio = 0;
       },
 
       previewImage(files) {
@@ -101,18 +126,18 @@
         return Promise.all(promises)
       },
 
-      async upload () {
+      async upload() {
         // 通过formData上传图片
-        const data = {
-          token: 'H4E4mX6XAQ3eWGeujorbodiSmzHEPivpO3lwv_5E:Rev-paiP4ee7t0V_O7uz9VRMuu4' +
-            '=:eyJzY29wZSI6InBlLWlkZWEiLCJkZWFkbGluZSI6MTUzNTcwOTM1N30=',
+        const token = await this.getUploadToken();
+        const data =  {
+          token,
           file: this.previewImg.file,
         };
-        // 上传到七牛
-        const onUploadProgress = progressEvent => {
+        // 上传进度
+        let onUploadProgress = (progressEvent) => {
           this.progressRatio = progressEvent.loaded / progressEvent.total
         };
-        const config =  {
+        const config = {
           onUploadProgress,
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -122,10 +147,31 @@
 
         const url = 'http://up-z1.qiniup.com';
         const domain = 'http://design.oldzhou.cn';
+        try {
+          // 上传到七牛
+          const res = await axios.post(url, this.getFromData(data), config);
+          this.previewImg.src = `${domain}/${res.data.key}`;
+        } catch (e) {
+          this.progressRatio = 0;
+          console.log('上传失败', e)
+        }
+      },
 
-        const res = await axios.post(url, this.getFromData(data), config);
-
-        this.previewImg.src = `${domain}/${res.data.key}`;
+      // 获取上传图片凭证
+      async getUploadToken() {
+        let token = Cookie.get('uploadToken');
+        if (token) {
+          return token
+        }
+        const url = 'http://139.199.125.59/demo/upload/certificate';
+        const res = await axios.get(url);
+        token = res.data.ret.uploadToken;
+        // cookie有效期10分钟
+        const expireTime = new Date(Date.now() + 60 * 1000);
+        Cookie.set('uploadToken', token, {
+          expires: expireTime
+        });
+        return token
       },
 
       getFromData(data) {
@@ -141,7 +187,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   .grid-container {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -183,6 +229,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    transition: all 3s linear;
   }
   .progress-text {
     position: absolute;
@@ -195,46 +242,86 @@
     font-size: 16px;
     line-height: 1;
   }
-  .loader {
-    display: none;
+  .progress-text-center {
     position: absolute;
     left: 50%;
-    top:50%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border: 10px solid lavenderblush;
   }
-  .right {
+  .outer {
+    position: fixed;
+    right: 200px;
+    top: 200px;
+    width: 400px;
+    height: 250px;
+    border: 1px solid darkgray;
+  }
+  .loader {
+    box-sizing: border-box;
     position: absolute;
     left: 50%;
-    top:50%;
-    transform: translate(-100%, -50%);
-    width: 50px;
-    height: 100px;
-    box-sizing: border-box;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+  }
+  .loader-container {
+    box-sizing: inherit;
+    position: relative;
+    width: 50%;
+    height: 100%;
     overflow: hidden;
+    float: left;
   }
-  .loader-cover-right {
-    width: 100px;
-    height: 100px;
-    border: 10px solid red;
-    border-top:10px solid green;
-    border-right:10px solid green;
-    border-radius: 50%;
-    box-sizing: border-box;
-  }
-  /* TODO: 总结一下*/
-  .loader-cover-left {
+  .loader-bg {
+    box-sizing: inherit;
     position: absolute;
-    left: 50%;
-    top:50%;
-    transform: translate(-50%, -50%) rotate(-135deg);
-    width: 100px;
-    height: 100px;
-    border: 10px solid transparent;
-    border-top:10px solid red;
-    border-right:10px solid red;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    border: 10px darkgray solid;
     border-radius: 50%;
+  }
+  .loader-circle {
+    box-sizing: inherit;
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    border: 10px transparent solid;
+    border-radius: 50%;
+  }
+  .loader-left-circle {
+    left: 0;
+    border-bottom-color: royalblue;
+    border-left-color: royalblue;
+  }
+  .loader-left-circle-animation {
+    animation: circle-left-run 4s linear infinite;
+  }
+  @keyframes circle-left-run {
+    0%, 50% {
+      transform: rotate(-135deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+  .loader-right-circle {
+    right: 0;
+    border-top-color: royalblue;
+    border-right-color: royalblue;
+  }
+  .loader-right-circle-animation {
+    animation: circle-right-run 4s linear infinite;
+  }
+  @keyframes circle-right-run {
+    0% {
+      transform: rotate(-135deg);
+    }
+    50%, 100% {
+      transform: rotate(45deg);
+    }
   }
 </style>

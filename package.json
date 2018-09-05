@@ -88,6 +88,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "js-cookie": "^2.2.0",
     "qiniu-js": "^2.5.1"
   }
 }
