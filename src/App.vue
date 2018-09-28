@@ -15,7 +15,9 @@
 </template>
 
 <script>
-	const DEMO_NUMBER = 18;
+  const requireComponent  = require.context('./components/demos', true, /demo[1-9][0-9]?\.vue$/);
+	const DEMO_NUMBER = requireComponent.keys().length;
+
   export default {
     name: 'App',
     data: function () {

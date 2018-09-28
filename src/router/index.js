@@ -1,107 +1,39 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
-import demo1 from '@/components/demos/demo1';
-import demo2 from '@/components/demos/demo2';
-import demo3 from '@/components/demos/demo3';
-import demo4 from '@/components/demos/demo4';
-import demo5 from '@/components/demos/demo5';
-import demo6 from '@/components/demos/demo6';
-import demo7 from '@/components/demos/demo7';
-import demo8 from '@/components/demos/demo8';
-import demo9 from '@/components/demos/demo9/demo9';
-import demo10 from '@/components/demos/demo10/demo10';
-import demo11 from '@/components/demos/demo11';
-import demo12 from '@/components/demos/demo12';
-import demo13 from '@/components/demos/demo13';
-import demo14 from '@/components/demos/demo14/demo14';
-import demo15 from '@/components/demos/demo15/demo15';
-import demo16 from '@/components/demos/demo16';
-import demo17 from '@/components/demos/demo17';
-import demo18 from '@/components/demos/demo18';
 
+const requireComponent  = require.context('../components/demos', true, /demo[1-9][0-9]?\.vue$/);
+const routes = requireComponent.keys().map(fileName => {
+  // 获取组件配置
+  const componentConfig = requireComponent(fileName);
+
+  // 剥去文件名开头的 `./` 和结尾的扩展名
+  const componentName = fileName.replace(/^\.\/(demo[1-9][0-9]?).*\.\w+$/, '$1');
+
+  // 全局注册组件
+  const component = Vue.component(
+    componentName,
+    // 如果这个组件选项是通过 `export default` 导出的，
+    // 那么就会优先使用 `.default`，
+    // 否则回退到使用模块的根。
+    componentConfig.default || componentConfig
+  );
+
+  return {
+    path: `/${componentName}` ,
+    name: componentName,
+    component,
+  }
+});
+
+routes.unshift({
+  path: '/',
+  name: 'HelloWorld',
+  component: HelloWorld
+});
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }, {
-			path: '/demo1',
-			name: 'demo1',
-			component: demo1
-		}, {
-			path: '/demo2',
-			name: 'demo2',
-			component: demo2
-		}, {
-			path: '/demo3',
-			name: 'demo3',
-			component: demo3
-		}, {
-			path: '/demo4',
-			name: 'demo4',
-			component: demo4
-		}, {
-			path: '/demo5',
-			name: 'demo5',
-			component: demo5
-		}, {
-			path: '/demo6',
-			name: 'demo6',
-			component: demo6
-		},
-		{
-			path: '/demo7',
-			name: 'demo7',
-			component: demo7
-		}, {
-			path: '/demo8',
-			name: 'demo8',
-			component: demo8
-		}, {
-			path: '/demo9',
-			name: 'demo9',
-			component: demo9
-		}, {
-      path: '/demo10',
-      name: 'demo10',
-      component: demo10
-    }, {
-      path: '/demo11',
-      name: 'demo11',
-      component: demo11
-    }, {
-      path: '/demo12',
-      name: 'demo12',
-      component: demo12
-    }, {
-      path: '/demo13',
-      name: 'demo13',
-      component: demo13
-    }, {
-      path: '/demo14',
-      name: 'demo14',
-      component: demo14
-    }, {
-      path: '/demo15',
-      name: 'demo15',
-      component: demo15
-    }, {
-      path: '/demo16',
-      name: 'demo16',
-      component: demo16
-    }, {
-      path: '/demo17',
-      name: 'demo17',
-      component: demo17
-    }, {
-      path: '/demo18',
-      name: 'demo18',
-      component: demo18
-    }
-  ]
+  routes,
 })

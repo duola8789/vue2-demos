@@ -10,6 +10,7 @@
     <div class="image-container">
       <img v-if="src" :src='src' class="image">
     </div>
+    <img v-for="img in images" :src="img" :key="img" class="insert">
 	</div>
 </template>
 
@@ -18,11 +19,15 @@
   import LeftChild from './demo10-1'
   import RightChild from './demo10-2'
 
+  const context = require.context('.', false, /.*\.(jpg|png)$/);
+  const images = context.keys().map(v => context(v));
+
   export default {
     data() {
       return {
         src: '',
-        content: ''
+        content: '',
+        images,
       }
     },
     computed: {},
@@ -116,5 +121,9 @@
   .image {
     width: 100%;
     height: 100%;
+  }
+  .insert {
+    width: 200px;
+    vertical-align: top;
   }
 </style>
