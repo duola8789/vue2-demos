@@ -1,25 +1,84 @@
 <template>
 	<div>
-		<h1>demo10 非父子组件之间的通信</h1>
-    <div class="wrap">
-      <LeftChild class="child"></LeftChild>
-      <RightChild class="child"></RightChild>
+		<h1>demo10 非父子组件之间的通信(添加一个ImageMaker的例子）</h1>
+    <div class='wrap'>
+      <LeftChild class='child'></LeftChild>
+      <RightChild class='child'></RightChild>
+    </div>
+    <button @click='capture'>click</button>
+    <p>图片：</p>
+    <div class="image-container">
+      <img v-if="src" :src='src' class="image">
     </div>
 	</div>
 </template>
 
 <script>
+  import axios from 'axios'
   import LeftChild from './demo10-1'
   import RightChild from './demo10-2'
 
   export default {
     data() {
       return {
-
+        src: '',
+        content: ''
       }
     },
     computed: {},
-    methods: {},
+    methods: {
+      capture() {
+        const params = {
+          'meta': {
+            'path': '易龙智投/CRM文字转微信图片',
+            'theme': { 'name': '图片', 'ext': 'png', 'captureOptions': {} }
+          },
+          'data': {
+            'style': { 'color': '#CF3A3A', 'backgroundColor': 'red' },
+            'fontFamily': 'PingFang-SC-Regular',
+            'fontSize': 14,
+            'color': '#CF3A3A',
+            'backgroundColor': '#fff',
+            'text': '阿斯顿飞阿斯顿飞'
+          }
+        };
+        const url = 'http://image-maker.nfop.ms.netease.com/api/capture/robot';
+        // const url = 'http://10.234.98.49:3000/api/capture/robot';
+
+        axios.post(url, params, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(v => {
+          this.src = v.data;
+          console.log(v.data)
+        })
+      },
+      getTopN(arr, n) {
+        let target = [...arr];
+        let res = [];
+        let maxIndex;
+        for (let i = 0; i < n; i++) {
+          maxIndex = 0;
+          for (let j = 0; j < target.length; j++) {
+            if (target[maxIndex] < target[j]) {
+              maxIndex = j;
+            }
+          }
+          res = res.concat(target.splice(maxIndex, 1));
+        }
+        return res;
+      },
+      getTopN2(arr, n) {
+        // sort参数返回值大于1，就交换位置
+        return [...arr].sort((a, b) => b - a).slice(0, n)
+      }
+    },
+    mounted() {
+      const arr = [5, 12, 2223, 4, 99, 5, 111];
+      console.log(this.getTopN(arr, 3));
+      console.log(this.getTopN2(arr, 3));
+    },
     components: {
       LeftChild,
       RightChild
@@ -40,5 +99,22 @@
     width: 40%;
     border: 1px solid red;
     height: 120px;
+  }
+  .editable {
+    margin-left: 30px;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #333;
+  }
+  .image-container {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    margin: 0 auto;
+  }
+  .image {
+    width: 100%;
+    height: 100%;
   }
 </style>
