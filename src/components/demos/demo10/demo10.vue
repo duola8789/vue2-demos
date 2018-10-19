@@ -39,16 +39,16 @@
             'theme': { 'name': '图片', 'ext': 'png', 'captureOptions': {} }
           },
           'data': {
-            'style': { 'color': '#CF3A3A', 'backgroundColor': 'red' },
+            'style': { 'color': '#CF3A3A', 'backgroundColor': '#fff' },
             'fontFamily': 'PingFang-SC-Regular',
-            'fontSize': 14,
+            'fontSize': 32,
             'color': '#CF3A3A',
             'backgroundColor': '#fff',
-            'text': '阿斯顿飞阿斯顿飞'
+            'text': '%'
           }
         };
-        const url = 'http://image-maker.nfop.ms.netease.com/api/capture/robot';
-        // const url = 'http://10.234.98.49:3000/api/capture/robot';
+        // const url = 'http://image-maker.nfop.ms.netease.com/api/capture/robot';
+        const url = 'http://localhost:3000/api/capture/robot';
 
         axios.post(url, params, {
           headers: {
@@ -59,30 +59,6 @@
           console.log(v.data)
         })
       },
-      getTopN(arr, n) {
-        let target = [...arr];
-        let res = [];
-        let maxIndex;
-        for (let i = 0; i < n; i++) {
-          maxIndex = 0;
-          for (let j = 0; j < target.length; j++) {
-            if (target[maxIndex] < target[j]) {
-              maxIndex = j;
-            }
-          }
-          res = res.concat(target.splice(maxIndex, 1));
-        }
-        return res;
-      },
-      getTopN2(arr, n) {
-        // sort参数返回值大于1，就交换位置
-        return [...arr].sort((a, b) => b - a).slice(0, n)
-      }
-    },
-    mounted() {
-      const arr = [5, 12, 2223, 4, 99, 5, 111];
-      console.log(this.getTopN(arr, 3));
-      console.log(this.getTopN2(arr, 3));
     },
     components: {
       LeftChild,
