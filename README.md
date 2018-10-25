@@ -47,3 +47,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo17：上传进度提示
 - demo18：在ElementUI中插入自定义标签
 - demo19：动态读取图片
+- demo20：Mixin
+- demo21：组件上使用v-model
