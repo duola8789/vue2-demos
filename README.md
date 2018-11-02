@@ -49,3 +49,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo19：动态读取图片
 - demo20：Mixin
 - demo21：组件上使用v-model
+- demo22：队列和promise的一个实际问题
