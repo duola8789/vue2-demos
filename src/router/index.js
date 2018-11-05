@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
@@ -23,6 +24,13 @@ const routes = requireComponent.keys().map(fileName => {
     path: `/${componentName}` ,
     name: componentName,
     component,
+    /**
+     * 动态加载路由
+     * 需要babel的设置，babel@6需要插件babel-plugin-syntax-dynamic-import， babel@7@babel/plugin-syntax-dynamic-import
+     * 同时为了防止eslint报错：Parsing error: Unexpected token import，需要使用babel-eslint
+     * 方法：https://stackoverflow.com/questions/47815775/dynamic-imports-for-code-splitting-cause-eslint-parsing-error-import
+     */
+    // component: () => import('@/components/demos/demo1.vue')
   }
 });
 

@@ -1,4 +1,5 @@
 module.exports = {
+  "parser": "vue-eslint-parser",
   "env": {
     "browser": true,
     "amd": true,
@@ -6,6 +7,8 @@ module.exports = {
   },
   parserOptions:{
     "ecmaVersion": 8,
+    "parser": "babel-eslint",
+    "sourceType": "module"
   },
   "extends": [
     "plugin:vue/essential"
