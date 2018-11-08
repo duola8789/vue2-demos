@@ -83,9 +83,12 @@
     margin: 20px 0;
   }
   .content {
-    width: 800px;
-    min-width: 500px;
-    padding: 50px 0;
+    padding: 30px 20px;
+    flex-grow: 1;
+    box-sizing: border-box;
+  }
+  .inner-content {
+    margin-top: 30px;
   }
   a {
     color: gray
