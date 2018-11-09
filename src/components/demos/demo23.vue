@@ -72,6 +72,12 @@
           <p>时间复杂度：O(n<sup>2</sup>)</p>
           <p>结果： {{b3Result}}</p>
         </div>
+        <div class="methods">
+          <h3>插入排序</h3>
+          <p>认为第一个元素已经排好序，取出下一个元素，在已经排好序的序列中进行扫描，插入到其中</p>
+          <p>时间复杂度：O(n<sup>2</sup>)</p>
+          <p>结果： {{b4Result}}</p>
+        </div>
       </li>
       <li class="li">123</li>
       <li class="li">123</li>
@@ -331,7 +337,6 @@ export default {
       return tempArr;
     },
 
-
     // 选择排序
     b3Result() {
       let tempArr = [...this.input];
@@ -347,6 +352,24 @@ export default {
         }
       }
       return tempArr;
+    },
+
+    // 插入排序
+    b4Result() {
+      let tempArr = [...this.input];
+
+      function insertSort(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j > 0; j--) {
+            if (arr[j - 1] < arr[j]) {
+              [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+            }
+          }
+        }
+        return arr;
+      }
+
+      return insertSort(tempArr);
     },
   },
   components: {}
