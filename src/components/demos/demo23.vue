@@ -78,6 +78,12 @@
           <p>时间复杂度：O(n<sup>2</sup>)</p>
           <p>结果： {{b4Result}}</p>
         </div>
+        <div class="methods">
+          <h3>归并排序</h3>
+          <p>认为第一个元素已经排好序，取出下一个元素，在已经排好序的序列中进行扫描，插入到其中</p>
+          <p>时间复杂度：O(n<sup>2</sup>)</p>
+          <p>结果： {{b5Result}}</p>
+        </div>
       </li>
       <li class="li">123</li>
       <li class="li">123</li>
@@ -368,8 +374,18 @@ export default {
         }
         return arr;
       }
-
       return insertSort(tempArr);
+    },
+
+    // 归并排序
+    b5Result() {
+      let tempArr = [...this.input];
+
+      function mergeSort(arr) {
+         // const index = Math.floot(arr.length / 2)
+      }
+
+      return mergeSort(tempArr);
     },
   },
   components: {}
