@@ -7,7 +7,6 @@
       <p><span>局部过滤器： </span>{{value | repeat}}</p>
       <p><span>全局过滤器 + 局部过滤器： </span>{{value | capitalize1st  | repeat}}</p>
     </div>
-
   </div>
 </template>
 

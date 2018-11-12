@@ -79,10 +79,16 @@
           <p>结果： {{b4Result}}</p>
         </div>
         <div class="methods">
-          <h3>归并排序</h3>
-          <p>认为第一个元素已经排好序，取出下一个元素，在已经排好序的序列中进行扫描，插入到其中</p>
-          <p>时间复杂度：O(n<sup>2</sup>)</p>
+          <h3>快速排序</h3>
+          <p>选择一个基准，小于基准的元素放到一边，大于基准的放到另外一边，不断重复这一过程</p>
+          <p>时间复杂度：O(nlog<sub>n</sub>)</p>
           <p>结果： {{b5Result}}</p>
+        </div>
+        <div class="methods">
+          <h3>计数排序</h3>
+          <p>利用时间换空间，但是这种方法不能对应数组中有负数的情况</p>
+          <p>时间复杂度：O(N)</p>
+          <p>结果： {{b6Result}}</p>
         </div>
       </li>
       <li class="li">123</li>
@@ -116,7 +122,7 @@ export default {
       let arr = [];
       // 方法1，利用for循环
       for (let i = 0; i < this.n; i++) {
-        const random = -100 + Math.round(Math.random() * 200);
+        const random = 100 + Math.round(Math.random() * 200);
         if (arr.indexOf(random) === -1) {
           arr.push(random)
         } else {
@@ -374,19 +380,62 @@ export default {
         }
         return arr;
       }
+
       return insertSort(tempArr);
     },
 
-    // 归并排序
+    // 快速排序
     b5Result() {
       let tempArr = [...this.input];
 
-      function mergeSort(arr) {
-         // const index = Math.floot(arr.length / 2)
+      function quickSort(arr) {
+        if (arr.length <= 0) {
+          return arr
+        }
+        const baseIndex = Math.floor(arr.length / 2);
+        const base = arr.splice(baseIndex, 1);
+        let left = [], right = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          (arr[i] > base ? left : right).push(arr[i])
+        }
+
+        return quickSort(left).concat(base, quickSort(right))
       }
 
-      return mergeSort(tempArr);
+      return quickSort(tempArr);
     },
+
+    // 计数排序
+    b6Result() {
+      let tempArr = [...this.input];
+
+      function sort(arr) {
+        let temp = [];
+        let result = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          if (!temp[arr[i]]) {
+            temp[arr[i]] = 1
+          } else {
+            temp[arr[i]]++
+          }
+        }
+
+        for (let j = 0; j < temp.length; j++) {
+          if (temp[j]) {
+            for (let k = 0; k < temp[j]; k++) {
+              result.push(j)
+            }
+          }
+        }
+
+        return result.reverse();
+      }
+
+
+      return sort(tempArr);
+    }
   },
   components: {}
 }
