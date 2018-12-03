@@ -35,10 +35,6 @@
 		color: #42b983;
 	}
 	.hello {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+    padding-top: 30vh
 	}
 </style>

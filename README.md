@@ -49,9 +49,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo19：动态读取图片
 - demo20：Mixin
 - demo21：组件上使用v-model
-
 - demo22：队列和promise的一个实际问题
 - demo23：算法相关
 - demo24：Vue的过滤器filter
 - demo25：富文本编辑器
 - demo26：canvas
+- demo27：可拖拽DIV

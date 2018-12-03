@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>canvas</h1>
-    <canvas width="500" height="200" id="drawing">I can draw something here.</canvas>
+    <canvas width='500' height='200' id='drawing'>I can draw something here.</canvas>
   </div>
 </template>
 
@@ -120,8 +120,13 @@ export default {
   text-align: left;
   border: 1px solid darkcyan;
 }
-canvas {
+canvas, .drag-zone {
   margin: 20px 0;
   border: 1px solid rosybrown;
+}
+.drag-zone {
+  width: 500px;
+  height: 200px;
+  text-align: center;
 }
 </style>
