@@ -36,6 +36,9 @@ Object.keys(filters).forEach(key => {
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
+  data: {
+	  eventBus: new Vue()
+  },
 	router,
 	store,
 	components: {App},

@@ -2,6 +2,7 @@
   <div class="container">
     <p>Demo21 Child - input</p>
     <label><input :value="value" @input="getOut"></label>
+    <label><input :value="value2" @change="change"></label>
   </div>
 </template>
 
@@ -9,11 +10,16 @@
 export default {
   props: ['value'],
   data() {
-    return {}
+    return {
+      value2: ''
+    }
   },
   methods: {
     getOut(e) {
       this.$emit('input', e.target.value)
+    },
+    change(e) {
+      this.$root.eventBus.$emit('test', e.target.value)
     }
   }
 }
