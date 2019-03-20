@@ -56,3 +56,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo26：canvas
 - demo27：可拖拽DIV
 - demo28：CSS圆周运动
+- demo29：导出Excel表格

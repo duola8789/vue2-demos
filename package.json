@@ -91,6 +91,7 @@
   ],
   "dependencies": {
     "js-cookie": "^2.2.0",
-    "qiniu-js": "^2.5.1"
+    "qiniu-js": "^2.5.1",
+    "zipcelx": "^1.6.0"
   }
 }
