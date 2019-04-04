@@ -39,17 +39,42 @@
         if (value === promise) {
           return reject(promise, new TypeError('A Promise cannot be resolved with itself'))
         }
-  
+        
         // 如果 value 为 Promise，则使 promise 接受 value 的状态
         if (isPromise(value)) {
-          const deferreds = promise._deferreds
+          const deferreds = promise._deferreds;
+          
+          if (value._state === 0) {
+            // value 为 pending 状态
+            // 将 promise._deferreds 传递给 value.deferreds
+            value._deferreds.push(...deferreds)
+          } else if (deferreds.length > 0) {
+            // value 为非 pending 状态
+            // 使用 value 作为当前的 promise ，执行 then 注册回调处理
+            for (let i = 0; i < deferreds.length; i++) {
+              handleResolved(promise, deferreds[i])
+            }
+          }
         }
         
+        // 省略 value 为 thenable 对象和函数的情况
         
+        // 改变 promise 内部状态为 resolved
+        promise._state = 1;
+        promise._value = value;
+        
+        // 如果存在 then 注册的回调函数则依次执行
+        if (promise._deferreds.length > 0) {
+          for (let i = 0; i < promise._deferreds.length; i++) {
+            handleResolved(promise, promise._deferreds)
+          }
+          // 清空回调函数队列
+          promise._deferreds = []
+        }
       }
       
       function reject(promise, reason) {
-      
+        asyncFn
       }
       
       
