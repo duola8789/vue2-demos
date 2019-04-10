@@ -3,7 +3,7 @@ module.exports = {
   "env": {
     "browser": true,
     "amd": true,
-    "jquery": true
+    "node": true
   },
   parserOptions:{
     "ecmaVersion": 8,
