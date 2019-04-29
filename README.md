@@ -58,3 +58,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo28：CSS圆周运动
 - demo29：导出Excel表格
 - demo30：动手实现Promise
+- demo31：从Node层获取数据（BFF）
+- demo32：用JavaScript实现一个栈
