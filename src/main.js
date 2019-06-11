@@ -6,6 +6,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 import router from './router';
 import store from './store';
+import MyLoading from '@/plugin/myLoading/index'
+
+Vue.use(MyLoading);
 
 import filters from '@/components/helper/filters'
 // import './mock'
