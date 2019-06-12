@@ -7,8 +7,10 @@ import App from './App';
 import router from './router';
 import store from './store';
 import MyLoading from '@/plugin/myLoading/index'
+import MyDatePicker from '@/plugin/myDatePicker/index'
 
 Vue.use(MyLoading);
+Vue.use(MyDatePicker);
 
 import filters from '@/components/helper/filters'
 // import './mock'
