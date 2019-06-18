@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>My DatePicker</h1>
-    <MyDatePicker />
+    <MyDatePicker class="date-picker"/>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'demo33',
+    name: 'demo34',
     props: [],
     data() {
       return {
@@ -20,4 +20,7 @@
   }
 </script>
 <style scoped>
+  .date-picker {
+    margin-top: 50px;
+  }
 </style>

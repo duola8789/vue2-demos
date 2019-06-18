@@ -8,6 +8,7 @@ import router from './router';
 import store from './store';
 import MyLoading from '@/plugin/myLoading/index'
 import MyDatePicker from '@/plugin/myDatePicker/index'
+import '@/assets/icons/iconfont.css'
 
 Vue.use(MyLoading);
 Vue.use(MyDatePicker);
