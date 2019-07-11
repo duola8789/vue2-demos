@@ -15,6 +15,7 @@
     props: [],
     data() {
       return {
+        scrollX: 0,
         containerX: 0,
         containerWidth: 0,
         separatorX: 0,
@@ -22,16 +23,26 @@
       }
     },
     mounted() {
-      const { left, width } = this.$refs.imgContainer.getBoundingClientRect();
-      this.containerX = left;
-      this.containerWidth = width;
-      
+      this.getBoundingClientRect()
     },
     methods: {
+      getBoundingClientRect() {
+        const { left, width } = this.$refs.imgContainer.getBoundingClientRect();
+        this.containerX = left;
+        this.containerWidth = width;
+        this.scrollX = window.scrollX
+      },
+      
       mouseMove(e) {
+        // 如果移动了滚动条，则重新计算距离
+        if (this.scrollX !== window.scrollX) {
+          this.getBoundingClientRect();
+        }
+        
         const min = 0, max = this.containerWidth - this.separatorWidth;
+        
         // 当前坐标值
-        const result = e.clientX - this.containerX;
+        const result = e.pageX - this.containerX - window.scrollX;
         
         if (result <= max && result >= min) {
           this.separatorX = result
