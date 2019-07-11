@@ -61,3 +61,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo31：从Node层获取数据（BFF）
 - demo32：用JavaScript实现一个栈
 - demo33：编写、使用MyLoading插件
+- demo34：日历选择器组件
+- demo35：图片对比
