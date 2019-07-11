@@ -8,10 +8,12 @@ import router from './router';
 import store from './store';
 import MyLoading from '@/plugin/myLoading/index'
 import MyDatePicker from '@/plugin/myDatePicker/index'
+import ImageComparison from '@/plugin/imageComparison/index'
 import '@/assets/icons/iconfont.css'
 
 Vue.use(MyLoading);
 Vue.use(MyDatePicker);
+Vue.use(ImageComparison);
 
 import filters from '@/components/helper/filters'
 // import './mock'
