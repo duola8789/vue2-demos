@@ -13,6 +13,12 @@
         <p class="text2" :key="text.id">{{text.val}}</p>
       </transition>
     </div>
+    <h2>列表过渡</h2>
+    <div class="text-container">
+      <transition-group tg="div" name="list" class="list-container" mode="out-in">
+        <p v-for="(text, index) in arr2" :key="text + index" class="list-item">{{text}}</p>
+      </transition-group>
+    </div>
 	</div>
 </template>
 
@@ -32,7 +38,9 @@
           '5 看五月销量，建议参考A4，打8折吧。',
           '1 不是被郭德纲发现的，也不是一开始就收为徒弟。',
         ],
+        arr2: [],
         number: 0,
+        number2: -1,
       }
     },
     computed: {
@@ -44,7 +52,8 @@
       }
     },
     mounted() {
-      this.startMove()
+      this.startMove();
+      this.startMove2()
     },
     methods: {
       startMove() {
@@ -55,6 +64,18 @@
             this.number += 1;
           }
           this.startMove();
+        }, totalDuration)
+      },
+      startMove2() {
+        let timer = setTimeout(() => {
+          this.number2 += 1;
+          if(this.number2 > 4) {
+            const target = this.arr2.splice(4, 1);
+            this.arr2.unshift(target[0])
+          } else {
+            this.arr2.unshift(this.arr[this.number2]);
+          }
+          this.startMove2();
         }, totalDuration)
       },
     },
@@ -135,4 +156,36 @@
   .slide-enter{
     transform: translateY(20px);
   }
+
+  .list-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .list-item {
+    margin: 0;
+    transition: all 1s;
+    overflow: hidden;
+  }
+  .list-move {
+    /*transition: transform 1s;*/
+  }
+
+  .list-enter {
+    transform: translateY(30px);
+  }
+
+  .list-enter-to, .list-leave {
+    transform: translateY(0);
+  }
+
+  .list-leave-to {
+    transform: translateY(-30px)
+  }
+
+  .list-leave-active {
+    position: absolute;
+    width: 0;
+  }
+
+
 </style>
