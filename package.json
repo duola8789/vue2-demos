@@ -47,7 +47,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.4.4",
     "jest-serializer-vue": "^0.3.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lodash": "^4.17.11",
