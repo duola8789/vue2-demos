@@ -9,6 +9,9 @@ import demo16 from './modules/demo16.js'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  state: {
+    count: 0,
+  },
 	modules: {
 		store_todoList: todoList,
 		store_demo16: demo16

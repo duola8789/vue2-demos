@@ -20,6 +20,7 @@ const routes = requireComponent.keys().map(fileName => {
     componentConfig.default || componentConfig
   );
 
+
   return {
     path: `/${componentName}` ,
     name: componentName,
