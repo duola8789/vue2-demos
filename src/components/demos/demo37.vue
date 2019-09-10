@@ -1,38 +1,160 @@
 <template>
   <div>
-    <h1>demo37 -- Vuex</h1>
-    <p>The number is {{count}}</p>
-    <button>add</button>
+    <h1>demo37 -- {{title}} -- TodoList</h1>
+    <p>共{{totalCount}}项待办事项, 已完成{{doneCount}}项</p>
+    <div class="list-container">
+      <ul>
+        <li v-for="(item, index) in todoList" :key="item.id">
+          <label class="input-container">
+            <input type="checkbox" @change="changeState(item, $event)" :checked="item.done"/>
+          </label>
+          <span class="todo-text" :class="item.done ? 'doneText' : ''">{{index}} - {{item.content}}</span>
+        </li>
+      </ul>
+      <div class="add-new-container">
+        <label><input @keypress.enter="addNew" placeholder="添加" v-model="newTodoContent"/></label>
+      </div>
+      <div class="add-new-container">
+        <label><input @keypress.enter="addNewRandom" placeholder="看心情添加" v-model="newTodoContentRandom"/></label>
+      </div>
+      <div class="image-container" v-if="src">
+        <img class="image" :src="src" alt="yesOrNo">
+      </div>
+    </div>
+
+    <ul class="list-container done-container">
+      <li v-for="(item, index) in doneTodos" :key="item.id">
+        {{index}} - {{item.content}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'demo37',
-    props: [],
-    data() {
-      return {
-      }
-    },
-    methods: {
-    },
-    computed: {
-      count() {
-        return this.$store.state.count;
-      }
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+
+export default {
+  name: 'demo37',
+  props: [],
+  data() {
+    return {
+      msg: ' world',
+      newTodoContent: '',
+      newTodoContentRandom: '',
+      src: '',
     }
+  },
+  methods: {
+    ...mapMutations({
+      commitAddNew: 'store_todoList/addTodo'
+    }),
+
+    ...mapMutations('store_todoList', {
+      commitChangeTodoState: 'changeTodoState'
+    }),
+
+    ...mapActions({
+      dispatchAddNew: 'store_todoList/addTodo'
+    }),
+
+    changeState(item, event) {
+      const result = this.commitChangeTodoState({
+        id: item.id,
+        checked: event.target.checked,
+      });
+      console.log('更改结果', result ? 'ok' : 'error');
+    },
+
+    addNew() {
+      const newContent = this.newTodoContent.trim();
+      if (!newContent) {
+        alert('输入有效内容');
+        return;
+      }
+      // 提交
+      // 等同于 this.$store.commit('store_todoList/addTodo', { content: newContent });
+      this.commitAddNew({ content: newContent });
+
+      // 清空
+      this.newTodoContent = '';
+    },
+
+
+    async addNewRandom() {
+      const newContent = this.newTodoContentRandom.trim();
+      if (!newContent) {
+        alert('输入有效内容');
+        return;
+      }
+
+      // 提交
+      // 等同于 this.$store.dispatch('store_todoList/addTodo', { content: newContent });
+      this.src = await this.dispatchAddNew({ content: newContent });
+      console.log(this.src);
+    },
+
+
+  },
+  computed: {
+    // state
+    todoList() {
+      return this.$store.state.store_todoList.todoList
+    },
+    ...mapState(['title']),
+
+    // getters
+    totalCount() {
+      return this.$store.getters['store_todoList/totalCount']
+    },
+    ...mapGetters({
+      doneCount: 'store_todoList/doneCount',
+      doneTodos: 'store_todoList/doneTodos'
+    }),
+    // 可以优化为
+    // ...mapGetters('store_todoList', [
+    //   'doneCount', 'doneTodos'
+    // ])
   }
+}
 </script>
 
 <style scoped>
   h2 {
     margin: 20px 0
   }
-  table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+  .list-container {
+    position: relative;
+    float: left;
+    width: 500px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid darkgray;
+    background: lightgray;
   }
-  th, td {
-    padding: 10px;
+  .done-container {
+    background: lightgreen;
+  }
+  .input-container {
+    margin: 0;
+    vertical-align: middle;
+  }
+  .add-new-container {
+    text-align: left;
+    margin-top: 10px;
+  }
+  .todo-text {
+    vertical-align: middle;
+  }
+  .doneText {
+    text-decoration: line-through;
+  }
+  .image-container {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 200px;
+  }
+  .image {
+    width: 100%;
   }
 </style>

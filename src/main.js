@@ -21,7 +21,7 @@ import filters from '@/components/helper/filters'
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
-Vue.prototype.$eventBus = Vue.prototype.$eventBus ||  new Vue();
+Vue.prototype.$eventBus = Vue.prototype.$eventBus || new Vue();
 
 // 一旦使用全局混入对象，将会影响到 所有之后创建的 Vue 实例。
 Vue.mixin({
@@ -43,13 +43,13 @@ Object.keys(filters).forEach(key => {
 
 /* eslint-disable no-new */
 new Vue({
-	el: '#app',
+  el: '#app',
   data: {
-	  eventBus: new Vue()
+    eventBus: new Vue()
   },
-	router,
-	store,
-	components: {App},
-	template: '<App/>'
+  router,
+  store,
+  components: {App},
+  template: '<App/>'
 });
 

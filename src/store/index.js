@@ -4,16 +4,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import todoList from './modules/todo-list.js'
-import demo16 from './modules/demo16.js'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
-    count: 0,
+    title: 'Vuex',
   },
-	modules: {
-		store_todoList: todoList,
-		store_demo16: demo16
-	}
+  modules: {
+    store_todoList: todoList,
+  }
 })
