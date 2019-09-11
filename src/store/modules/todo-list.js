@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const URL = 'https://yesno.wtf/api';
 
+// UUID
 const makeId = (function uuid() {
   let id = 0;
   return function () {
