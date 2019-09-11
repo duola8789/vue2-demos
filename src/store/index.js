@@ -27,5 +27,6 @@ export default new Vuex.Store({
   },
   modules: {
     store_todoList: todoList,
-  }
+  },
+  plugins: [logger]
 })
