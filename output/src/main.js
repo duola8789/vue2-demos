@@ -10,15 +10,17 @@ import MyLoading from '@/plugin/myLoading/index';
 import MyDatePicker from '@/plugin/myDatePicker/index';
 import ImageComparison from '@/plugin/imageComparison/index';
 import '@/assets/icons/iconfont.css';
-import filters from '@/components/helper/filters';
 
 Vue.use(MyLoading);
 Vue.use(MyDatePicker);
 Vue.use(ImageComparison);
 
+import filters from '@/components/helper/filters';
 // import './mock'
 
 Vue.use(ElementUI);
+
+debugger
 
 Vue.config.productionTip = false;
 Vue.prototype.$eventBus = Vue.prototype.$eventBus || new Vue();
@@ -26,7 +28,7 @@ Vue.prototype.$eventBus = Vue.prototype.$eventBus || new Vue();
 // 一旦使用全局混入对象，将会影响到 所有之后创建的 Vue 实例。
 Vue.mixin({
     created() {
-        console.log('全局mixin');
+        // console.log('全局mixin')
     }
 });
 
@@ -40,7 +42,6 @@ Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
 });
 
-
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
@@ -49,7 +50,8 @@ new Vue({
     },
     router,
     store,
-    components: {App},
+    components: {
+        App
+    },
     template: '<App/>'
 });
-
