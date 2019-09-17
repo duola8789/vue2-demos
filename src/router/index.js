@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HelloWorld from '@/components/HelloWorld';
+import NotFound from '@/components/NotFound';
 
 const requireComponent  = require.context('../components/demos', true, /demo[1-9][0-9]?\.vue$/);
 const routes = requireComponent.keys().map(fileName => {
@@ -39,6 +40,12 @@ routes.unshift({
   path: '/',
   name: 'HelloWorld',
   component: HelloWorld
+});
+
+routes.push({
+    path: '*',
+    name: 'NotFound',
+    component: NotFound
 });
 
 Vue.use(Router);
