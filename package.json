@@ -12,7 +12,8 @@
     "lint": "lint-staged",
     "fecs": "fecs check",
     "build": "node build/build.js",
-    "dll": "webpack -p --progress --config build/webpack.dll.config.js"
+    "dll": "webpack -p --progress --config build/webpack.dll.config.js",
+    "preview": "cd dist && npx http-server -a 127.0.0.1 -p 7070 -o"
   },
   "husky": {
     "hooks": {

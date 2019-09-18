@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h1>404 Not Found</h1>
         <h2>{{$route.params.pathMatch}}</h2>
     </div>
@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style scoped>
-
+    .container {
+        background: indianred;
+    }
 </style>

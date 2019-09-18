@@ -1,45 +1,23 @@
 <template>
     <div id="app">
         <ul class="nav">
-            <li>
-                <router-link to="/" exact>Home</router-link>
-            </li>
-            <li v-for="demo of demos" :key="demo">
-                <router-link :to="`/demo${demo}`">Demo-{{needZero(demo)}}{{demo}}</router-link>
-            </li>
+            <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/user" exact>User</router-link></li>
+            <li><router-link to="/about" exact>about</router-link></li>
         </ul>
         <div class="content">
-            <router-view :identity="identity"/>
+            <router-view />
         </div>
     </div>
 </template>
 
 <script>
-const requireComponent = require.context('./components/demos', true, /demo[1-9][0-9]?\.vue$/);
-const DEMO_NUMBER = requireComponent.keys().length;
-
 export default {
   name: 'App',
   data: function () {
-    return {
-      demos: DEMO_NUMBER,
-      identity: {
-        id: 123,
-        role: 123,
-      }
-    }
+    return {}
   },
   methods: {
-    getDemoArray() {
-      let arr = [];
-      for (let i = 0; i < DEMO_NUMBER; i++) {
-        arr.push(i + 1)
-      }
-      return arr;
-    },
-    needZero(number) {
-      return number < 10 ? '0' : null
-    }
   }
 }
 </script>
@@ -89,9 +67,6 @@ export default {
         box-sizing: border-box;
         overflow-y: auto;
     }
-    .inner-content {
-        margin-top: 30px;
-    }
     a {
         color: gray
     }
@@ -116,28 +91,5 @@ export default {
     }
     p {
         margin: 10px 0;
-    }
-    .title {
-        display: inline-block;
-        width: 150px;
-        margin-right: 15px;
-        color: crimson;
-    }
-    .item {
-        width: 400px;
-        margin: 10px auto;
-        padding-left: 20px;
-        text-align: left;
-    }
-    .item-explain {
-        color: gray;
-        font-style: italic;
-    }
-    .icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
     }
 </style>
