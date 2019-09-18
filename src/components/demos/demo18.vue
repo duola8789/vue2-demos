@@ -20,7 +20,7 @@
     </div>
 
     <MyCom></MyCom>
-    <el-table :data="tableData" style="width: 100%; margin: 20px">
+    <el-table :data="tableData" style="width: 100%; margin: 20px" >
       <el-table-column
         prop="date"
         label="日期"
@@ -33,7 +33,7 @@
           <MyCom :prop1="insert(scope.row.name)" @del="test"></MyCom>
         </template>
       </el-table-column>
-      <el-table-column prop="address" label="地址" :formatter="formatter"></el-table-column>
+      <el-table-column prop="address" label="地址" :formatter="formatter" width="280" ></el-table-column>
       <el-table-column
         prop="tag"
         label="标签"
