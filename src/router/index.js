@@ -5,7 +5,8 @@ import Router from 'vue-router';
 // 懒加载工厂函数
 const lazyLoad = path => {
   if (process.env.NODE_ENV === 'development') {
-    return require(`@/pages/${path}.vue`).default
+    const comp = require(`@/pages/${path}.vue`);
+    return comp.default || comp
   }
   return () => import(/* webpackChunkName: "view-[request]-[index]" */ `@/pages/${path}.vue`);
 };
