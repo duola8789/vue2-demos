@@ -65,3 +65,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo35：图片对比
 - demo36：表格行数据合并
 - demo37：Vuex
+- demo38: XSS
