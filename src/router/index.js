@@ -14,13 +14,13 @@ import Demo38Child2 from '@/components/demos/demo38/demo38-2';
 /**
  * 路由自动注册
  */
-const requireComponent = require.context('@/components/demos', true, /demo[1-9][0-9]?\.vue$/);
+const requireComponent = require.context('@/components/demos', true, /demo[0-9][0-9]?\.vue$/);
 const routes = requireComponent.keys().map(fileName => {
   // 获取组件配置
   const componentConfig = requireComponent(fileName);
 
   // 剥去文件名开头的 `./` 和结尾的扩展名
-  const componentName = fileName.replace(/^\.\/(demo[1-9][0-9]?).*\.\w+$/, '$1');
+  const componentName = fileName.replace(/^\.\/(demo[0-9][0-9]?).*\.\w+$/, '$1');
 
   // 全局注册组件
   const component = Vue.component(

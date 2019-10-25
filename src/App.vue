@@ -5,7 +5,7 @@
                 <router-link to="/" exact>Home</router-link>
             </li>
             <li v-for="demo of demos" :key="demo">
-                <router-link :to="`/demo${demo}`">Demo-{{needZero(demo)}}{{demo}}</router-link>
+                <router-link :to="`/demo${demo-1}`">Demo-{{needZero(demo-1)}}{{demo-1}}</router-link>
             </li>
         </ul>
         <div class="content">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-const requireComponent = require.context('./components/demos', true, /demo[1-9][0-9]?\.vue$/);
+const requireComponent = require.context('./components/demos', true, /demo[0-9][0-9]?\.vue$/);
 const DEMO_NUMBER = requireComponent.keys().length;
 
 export default {
