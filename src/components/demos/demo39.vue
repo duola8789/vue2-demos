@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>demo38 - XSS</h1>
+    <h1>demo39 - XSS</h1>
     <div class="content">
       <h2>未防护</h2>
       <p>恶意：{{value}}</p>
@@ -25,7 +25,7 @@
 const xss = require('xss');
 
 export default {
-  name: 'demo38',
+  name: 'demo39',
   props: [],
   data() {
     return {
