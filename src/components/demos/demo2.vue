@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>demo2 -- 实例方法和模版</h1>
+    <h1>demo2 -- 实例方法和模版 {{prop.val}}</h1>
     <button @click="addClickedTime" :disabled="clickedTime >= 5">
       The button has been clicked {{clickedTime}} times
     </button>
@@ -28,6 +28,16 @@ export default {
     randomNumber: function () {
       console.log('computed');
       return this.clickedTime + Math.round((Math.random() * 100)) / 100
+    }
+  },
+
+  props: {
+    prop: {
+      type: Object,
+      default: () => {
+        console.log('prop');
+        return {}
+      }
     }
   },
 
