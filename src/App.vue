@@ -9,7 +9,9 @@
             </li>
         </ul>
         <div class="content">
+          <keep-alive>
             <router-view :identity="identity"/>
+          </keep-alive>
         </div>
     </div>
 </template>

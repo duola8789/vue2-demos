@@ -1,74 +1,94 @@
 <template>
-	<div>
-		<h1>demo2 -- 实例方法和模版</h1>
-		<button @click="addClickedTime" :disabled="clickedTime >= 5">
-			The button has been clicked {{clickedTime}} times
-		</button>
-		<p class="item"><span class="title">computed</span>The random number is {{randomNumber}}</p>
-		<p class="item"><span class="title">v-once</span><span>The random number is {{randomNumber}}</span></p>
-		<p class="item"><span class="title">v-html</span><span v-html="message2"></span></p>
-		<p class="item">
-			<span class="title">.prevent修饰符</span>
-			<a @click.prevent="justAlert" href="//www.baidu.com">Prevent jumping</a>
-		</p>
-	</div>
+  <div>
+    <h1>demo2 -- 实例方法和模版</h1>
+    <button @click="addClickedTime" :disabled="clickedTime >= 5">
+      The button has been clicked {{clickedTime}} times
+    </button>
+    <p class="item"><span class="title">computed</span>The random number is {{randomNumber}}</p>
+    <p class="item"><span class="title">v-once</span><span>The random number is {{randomNumber}}</span></p>
+    <p class="item"><span class="title">v-html</span><span v-html="message2"></span></p>
+    <p class="item">
+      <span class="title">.prevent修饰符</span>
+      <a @click.prevent="justAlert" href="//www.baidu.com">Prevent jumping</a>
+    </p>
+  </div>
 </template>
 
 <script>
-	export default {
-		data(){
-			return {
-				clickedTime: 0,
-				message2: '<span style="color:red">This should be red</span>',
-			}
-		},
+export default {
+  data() {
+    console.log('data');
+    return {
+      clickedTime: 0,
+      message2: '<span style="color:red">This should be red</span>',
+    }
+  },
 
-		computed: {
-			randomNumber: function () {
-				return this.clickedTime + Math.round((Math.random() * 100)) / 100
-			}
-		},
+  computed: {
+    randomNumber: function () {
+      console.log('computed');
+      return this.clickedTime + Math.round((Math.random() * 100)) / 100
+    }
+  },
 
-		methods: {
-			addClickedTime(){
-				this.clickedTime += 1
-			},
-			justAlert(){
-				alert('just alert')
-			}
-		},
+  watch: {
+    clickedTime: {
+      immediate: true,
+      handler: function () {
+        console.log('watch');
+      }
+    }
+  },
 
-		beforeCreate(){
-			console.log('beforeCreate')
-		},
+  methods: {
+    addClickedTime() {
+      this.clickedTime += 1
+    },
+    justAlert() {
+      alert('just alert')
+    }
+  },
 
-		created(){
-			console.log('created')
-		},
-		beforeMount(){
-			console.log('beforeMount')
-		},
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
 
-		mounted(){
-			console.log('mounted')
-		},
+  created() {
+    console.log('created')
+  },
 
-		beforeUpdate(){
-			console.log('beforeUpdate')
-		},
+  beforeMount() {
+    console.log('beforeMount')
+  },
 
-		updated(){
-			console.log('updated')
-		},
+  mounted() {
+    console.log('mounted')
+  },
 
-		beforeDestroy(){
-			console.log('beforeDestroy')
-		},
+  activated() {
+    console.log('activated')
+  },
 
-		destroyed(){
-			console.log('destroyed')
-		}
-	}
+  beforeUpdate() {
+    console.log('beforeUpdate')
+  },
+
+  updated() {
+    console.log('updated')
+  },
+
+  deactivated() {
+    console.log('deactivated')
+  },
+
+  beforeDestroy() {
+    console.log('beforeDestroy')
+  },
+
+  destroyed() {
+    console.log('destroyed')
+  },
+}
 </script>
 
 <style scoped>

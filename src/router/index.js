@@ -43,7 +43,7 @@ routes.unshift({
   name: 'HelloWorld',
   component: HelloWorld,
   beforeEnter(to, from, next) {
-    console.log('beforeEnter');
+    // console.log('beforeEnter');
     next();
   },
 });
@@ -53,7 +53,7 @@ routes.unshift({
   name: 'test',
   component: HelloWorld,
   beforeEnter(to, from, next) {
-    console.log('beforeEnter');
+    // console.log('beforeEnter');
     next();
   },
 });
@@ -87,17 +87,17 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('beforeEach');
+  // console.log('beforeEach');
   next();
 });
 
 router.beforeResolve((to, from, next) => {
-  console.log('beforeResolve');
+  // console.log('beforeResolve');
   next();
 });
 
 router.afterEach((to, from) => {
-  console.log('afterEach');
+  // console.log('afterEach');
 });
 
 export default router;

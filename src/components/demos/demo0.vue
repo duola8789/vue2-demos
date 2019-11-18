@@ -34,72 +34,17 @@ export default {
   },
 
   mounted() {
-    const a = {a: [[1, 2, 3]]};
-    console.log(JSON.stringify(a));
-    console.log(qs.stringify({a: [[1, 2, 3], [5, 6, 6]]},  { encode: false, arrayFormat: 'repeat' }))
+    console.log('mounted')
+  },
+
+  activated() {
+    console.log('activated')
   },
 
   methods: {
-    change(newState, activeValue, inactiveValue) {
-
-      this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {
-        confirmButtonText: '保存',
-        cancelButtonText: '放弃修改',
-        closeOnPressEscape: false,
-        closeOnClickModal: false,
-        customClass: 'message-box',
-        beforeClose: (action, instance, done) => {
-          if (action === 'confirm') {
-            if(!this.loading) {
-              this.loading = this.$loading({
-                target: '.message-box',
-                lock: true,
-                text: 'Loading',
-              });
-              console.log(this.loading);
-            } else {
-              this.loading();
-            }
-
-            request().then(v => {
-
-              done();
-              this.$message({
-                message: '激活成功',
-                type: 'success',
-                duration: 500,
-              });
-
-            }).catch(() => {
-              this.$message({
-                message: '激活失败',
-                type: 'error',
-                duration: 100,
-              });
-            }).finally(() => {
-              this.loading.close();
-            })
-          } else {
-            done();
-          }
-        }
-      }).then(v => {
-
-      }).catch(() => {
-
-        this.value.value = activeValue === newState ? inactiveValue : activeValue;
-      })
-    }
   },
 
   computed: {
-    isOtherBtnDisabled() {
-      return this.rowEditingState === 'edit' || this.rowEditingState === 'insert'
-    },
-
-    isSaveBtnDisabled() {
-      return this.rowEditingState
-    }
   },
 
   components: {}
