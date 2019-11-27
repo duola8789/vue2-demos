@@ -65,4 +65,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo35：图片对比
 - demo36：表格行数据合并
 - demo37：Vuex
-- demo38: XSS
+- demo38：Vue-Router
+- demo39：XSS
+- demo40：可拖拽表格
+- demo41：axios自动重试
