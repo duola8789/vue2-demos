@@ -69,3 +69,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - demo39：XSS
 - demo40：可拖拽表格
 - demo41：axios自动重试
+- demo42：展开收起小动画
+- demo43：粘贴复制
