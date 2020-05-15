@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>demo38 - 1 - id: {{id}}</h2>
+    <button @click="clickHandler">123</button>
   </div>
 </template>
 
@@ -10,16 +10,22 @@ export default {
   props: ['id'],
   data() {
     return {
-    }
+      ok: 'ok'
+    };
   },
-}
+  methods: {
+    clickHandler() {
+      this.id(999);
+    }
+  }
+};
 </script>
 
 <style scoped>
-  .container {
-    width: 200px;
-    height: 50px;
-    background: aqua;
-    margin: 0 auto;
-  }
+.container {
+  width: 200px;
+  height: 50px;
+  background: aqua;
+  margin: 0 auto;
+}
 </style>

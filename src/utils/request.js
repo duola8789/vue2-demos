@@ -7,9 +7,9 @@
 const axios = {
   request({url: time}) {
     console.log('HTTP!!!!');
-    return new Promise(resolve => {
-      setTimeout(resolve, time * 1000, time)
-    })
+    return new Promise((resolve) => {
+      setTimeout(resolve, time * 1000, time);
+    });
   }
 };
 
@@ -18,10 +18,10 @@ const requestFactory = () => {
   const cache = {};
   let current = null;
 
-  const flush = key => {
+  const flush = (key) => {
     if (cache[key] && Array.isArray(cache[key].listeners)) {
-      cache[key].listeners.forEach(listener => {
-        listener(cache[key].value)
+      cache[key].listeners.forEach((listener) => {
+        listener(cache[key].value);
       });
       cache[key].listeners = [];
     }
@@ -54,7 +54,10 @@ const requestFactory = () => {
       cache[key].pending = true;
 
       // 发送请求
-      axios.request({method, url, params}).then(value => add(key, value)).then(() => flush(key));
+      axios
+        .request({method, url, params})
+        .then((value) => add(key, value))
+        .then(() => flush(key));
 
       return this;
     },
@@ -65,7 +68,7 @@ const requestFactory = () => {
       }
       cache[current].listeners.push(cb);
     }
-  }
+  };
 };
 
 const requestWithCache = requestFactory();

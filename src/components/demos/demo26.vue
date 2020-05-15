@@ -1,19 +1,18 @@
 <template>
   <div>
     <h1>canvas</h1>
-    <canvas width='500' height='200' id='drawing'>I can draw something here.</canvas>
+    <canvas width="500" height="200" id="drawing">I can draw something here.</canvas>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'demo26',
   props: [],
   data() {
     return {
-      value: '',
-    }
+      value: ''
+    };
   },
   mounted() {
     const drawing = document.querySelector('#drawing');
@@ -32,7 +31,7 @@ export default {
       y: 100,
       r: 80,
       sAngel: 0,
-      endAngel: Math.PI * 2,
+      endAngel: Math.PI * 2
     };
     ctx.strokeStyle = 'red';
     ctx.arc(outerCircle.x, outerCircle.y, outerCircle.r, outerCircle.sAngel, outerCircle.endAngel, false);
@@ -46,7 +45,7 @@ export default {
       y: 100,
       r: 72,
       sAngel: 0,
-      endAngel: Math.PI * 2,
+      endAngel: Math.PI * 2
     };
     ctx.strokeStyle = 'blue';
     ctx.moveTo(outerCircle.x + innerCircle.r, innerCircle.y);
@@ -85,9 +84,9 @@ export default {
       startX: 0,
       startY: 0,
       endX: -30,
-      endY: -30,
+      endY: -30
     };
-    ctx.moveTo(hourLine.startX,hourLine.startY);
+    ctx.moveTo(hourLine.startX, hourLine.startY);
     ctx.lineTo(hourLine.endX, hourLine.endY);
     ctx.closePath();
     ctx.stroke();
@@ -99,9 +98,9 @@ export default {
       startX: 0,
       startY: 0,
       endX: 40,
-      endY: -40,
+      endY: -40
     };
-    ctx.moveTo(minuteLine.startX,minuteLine.startY);
+    ctx.moveTo(minuteLine.startX, minuteLine.startY);
     ctx.lineTo(minuteLine.endX, minuteLine.endY);
     ctx.closePath();
     ctx.stroke();
@@ -109,7 +108,7 @@ export default {
   // 获取选取
   methods: {},
   computed: {}
-}
+};
 </script>
 <style scoped>
 .inner-content {
@@ -120,7 +119,8 @@ export default {
   text-align: left;
   border: 1px solid darkcyan;
 }
-canvas, .drag-zone {
+canvas,
+.drag-zone {
   margin: 20px 0;
   border: 1px solid rosybrown;
 }

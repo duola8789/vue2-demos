@@ -10,7 +10,7 @@
       <li>* 但是由于到 urlA 的请求返回比较慢，导致 urlB 返回的数据被 urlA 返回的数据覆盖了，与用户预期的顺序不一致。</li>
       <li>* 请问如何设计代码，解决这个问题？</li>
     </ul>
-    <label><input v-model="value"></label>
+    <label><input v-model="value" /></label>
     <button @click="sendA">Send A</button>
     <button @click="sendB">Send B</button>
   </div>
@@ -26,17 +26,19 @@
  * 请问如何设计代码，解决这个问题？
  */
 
-const promiseA = () => (new Promise(((resolve, reject) => {
-  setTimeout(() => {
-    resolve('valueA')
-  }, 3000)
-})));
+const promiseA = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('valueA');
+    }, 3000);
+  });
 
-const promiseB = () => (new Promise(((resolve, reject) => {
-  setTimeout(() => {
-    resolve('valueB')
-  }, 1000)
-})));
+const promiseB = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('valueB');
+    }, 1000);
+  });
 
 export default {
   name: 'demo22',
@@ -47,7 +49,7 @@ export default {
       promiseArr: [],
       count: -1,
       start: false
-    }
+    };
   },
   computed: {},
   methods: {
@@ -72,7 +74,7 @@ export default {
           interval++;
           const res = await val;
           setTimeout(() => {
-            this.value = res
+            this.value = res;
           }, 1000 * interval);
         }
       }
@@ -82,7 +84,7 @@ export default {
     }
   },
   components: {}
-}
+};
 </script>
 
 <style scoped>

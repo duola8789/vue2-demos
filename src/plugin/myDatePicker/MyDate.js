@@ -12,7 +12,7 @@ const format = (date) => {
   const year = dateObj.getFullYear();
   const month = dateObj.getMonth() > 10 ? `${dateObj.getMonth() + 1}` : `0${dateObj.getMonth() + 1}`;
   const day = dateObj.getDate() > 9 ? `${dateObj.getDate()}` : `0${dateObj.getDate()}`;
-  return `${year}-${month}-${day}`
+  return `${year}-${month}-${day}`;
 };
 
 export default class MyDate {
@@ -29,7 +29,7 @@ export default class MyDate {
     // 当前选择的日期
     this.current = {
       year,
-      month,
+      month
     };
 
     // 输入日期
@@ -38,7 +38,7 @@ export default class MyDate {
     // 今天
     this.today = new Date(year, month - 1, day);
 
-    this.getDateArray()
+    this.getDateArray();
   }
 
   // 改变日期
@@ -47,7 +47,7 @@ export default class MyDate {
       year: date.getFullYear(),
       month: date.getMonth() + 1
     };
-    this.getDateArray()
+    this.getDateArray();
   }
 
   // 获得当前日期数组
@@ -76,10 +76,10 @@ export default class MyDate {
           key: weekDay,
           isCurrentMonth: month === this.current.month,
           isToday: +targetDate === +this.today
-        })
+        });
       }
       weekLoopStart += 7;
-      this.dates.push(rowDate)
+      this.dates.push(rowDate);
     }
   }
 }

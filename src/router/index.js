@@ -15,7 +15,7 @@ import Demo38Child2 from '@/components/demos/demo38/demo38-2';
  * 路由自动注册
  */
 const requireComponent = require.context('@/components/demos', true, /demo[0-9][0-9]?\.vue$/);
-const routes = requireComponent.keys().map(fileName => {
+const routes = requireComponent.keys().map((fileName) => {
   // 获取组件配置
   const componentConfig = requireComponent(fileName);
 
@@ -34,8 +34,8 @@ const routes = requireComponent.keys().map(fileName => {
   return {
     path: `/${componentName}`,
     // name: componentName,
-    component,
-  }
+    component
+  };
 });
 
 routes.unshift({
@@ -45,7 +45,7 @@ routes.unshift({
   beforeEnter(to, from, next) {
     // console.log('beforeEnter');
     next();
-  },
+  }
 });
 
 routes.unshift({
@@ -55,7 +55,7 @@ routes.unshift({
   beforeEnter(to, from, next) {
     // console.log('beforeEnter');
     next();
-  },
+  }
 });
 
 routes.push({
@@ -64,17 +64,17 @@ routes.push({
   component: NotFound
 });
 
-routes.find(v => v.path === '/demo38').children = [
+routes.find((v) => v.path === '/demo38').children = [
   {path: '/', redirect: {name: '382'}},
   {path: 'demo38-1/:id', name: '381', component: Demo38Child1, props: true},
-  {path: 'demo38-2', name: '382', component: Demo38Child2, props: true},
+  {path: 'demo38-2', name: '382', component: Demo38Child2, props: true}
 ];
 
-routes.find(v => v.path === '/demo14').children = [
+routes.find((v) => v.path === '/demo14').children = [
   {path: '/', redirect: 'Child1'},
   {path: 'Child1', component: Demo14Child1},
   {path: 'Child2', component: Demo14Child2},
-  {path: 'Child3', component: Demo14Child3},
+  {path: 'Child3', component: Demo14Child3}
 ];
 
 Vue.use(Router);
@@ -82,7 +82,7 @@ Vue.use(Router);
 const router = new Router({
   routes,
   scrollBehavior(to, from, savedPosition) {
-    return {x: 0, y: 0}
+    return {x: 0, y: 0};
   }
 });
 

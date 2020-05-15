@@ -1,9 +1,9 @@
 /**
  * Created by zh on 2019/12/1.
  */
-import { Message } from 'element-ui';
-export const getRect = ele => {
-  const { width, height, top, left, bottom, right } = ele.getBoundingClientRect();
+import {Message} from 'element-ui';
+export const getRect = (ele) => {
+  const {width, height, top, left, bottom, right} = ele.getBoundingClientRect();
   return {
     width,
     height,
@@ -12,10 +12,9 @@ export const getRect = ele => {
     bottom,
     right,
     middleLeft: left + width / 2,
-    middleTop: top + height / 2,
-  }
+    middleTop: top + height / 2
+  };
 };
-
 
 /**
  * 将文字复制到系统剪切板
@@ -24,15 +23,18 @@ export const getRect = ele => {
 export function copyTextToClipboard(text) {
   // 支持 Clipboard API 并且在安全环境下（localhost 或者 https）
   if (navigator && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-    navigator.clipboard.writeText(text).then(() => {
-      Message({
-        message: '内容已复制到剪切板',
-        type: 'success',
-        duration: 1000,
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        Message({
+          message: '内容已复制到剪切板',
+          type: 'success',
+          duration: 1000
+        });
+      })
+      .catch(() => {
+        // 静默失败
       });
-    }).catch(() => {
-      // 静默失败
-    });
   } else if (document && document.execCommand && typeof document.execCommand === 'function') {
     // 使用 execCommand 的后退方案
     const input = document.createElement('input');
@@ -48,7 +50,7 @@ export function copyTextToClipboard(text) {
       Message({
         message: '内容已复制到剪切板',
         type: 'success',
-        duration: 1000,
+        duration: 1000
       });
     } else {
       // 静默失败

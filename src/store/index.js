@@ -3,13 +3,13 @@
  */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { logger } from './plugins/logger'
+import {logger} from './plugins/logger';
 
-import todoList from './modules/todo-list'
+import todoList from './modules/todo-list';
 
 Vue.use(Vuex);
 
-const store =  new Vuex.Store({
+const store = new Vuex.Store({
   strict: true,
   state: {
     title: 'Vuex',
@@ -18,15 +18,15 @@ const store =  new Vuex.Store({
     }
   },
   mutations: {
-    changeSubTitle(state, { message }) {
+    changeSubTitle(state, {message}) {
       state.subTitle.message = message;
     },
-    changeTitle(state, { message }) {
+    changeTitle(state, {message}) {
       state.title = message;
     }
   },
   modules: {
-    store_todoList: todoList,
+    store_todoList: todoList
   },
   plugins: [logger]
 });
@@ -45,10 +45,10 @@ if (!module.hot) {
     // 加载新模块
     store.hotUpdate({
       modules: {
-        store_todoList: newTodoList,
+        store_todoList: newTodoList
       }
-    })
-  })
+    });
+  });
 }
 
 export default store;

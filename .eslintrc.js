@@ -51,7 +51,7 @@ module.exports = {
         // 建议return语句中不要包含赋值表达式
         'no-return-assign': 1,
         // 建议代码列数不能超过120行
-        'max-len': [1, 120],
+        'max-len': [1, 140],
         // 建议启用严格模式
         'global-strict': 0,
         'strict': 1,

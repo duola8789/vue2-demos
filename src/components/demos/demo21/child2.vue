@@ -11,19 +11,19 @@ export default {
   data() {
     return {
       childText: this.value
-    }
+    };
   },
   mounted() {
-    this.$root.eventBus.$on('test', e => {
-      console.log('received message from eventBus23: ', e)
-    })
+    this.$root.eventBus.$on('test', (e) => {
+      console.log('received message from eventBus23: ', e);
+    });
   },
   methods: {
     getOut(e) {
-      this.$emit('input', e.target.innerText)
+      this.$emit('input', e.target.innerText);
     }
   }
-}
+};
 </script>
 
 <style scoped>

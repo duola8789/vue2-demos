@@ -6,27 +6,25 @@
 </template>
 
 <script>
-
 export default {
   name: 'demo25',
   props: [],
   data() {
     return {
-      value: '',
-    }
+      value: ''
+    };
   },
-  mounted() {
-  },
+  mounted() {},
   // 获取选区
   methods: {
     input(e) {
-      if(document.getSelection().toString()) {
-        console.log(document.getSelection().toString())
+      if (document.getSelection().toString()) {
+        console.log(document.getSelection().toString());
       }
     }
   },
   computed: {}
-}
+};
 </script>
 <style scoped>
 .inner-content {

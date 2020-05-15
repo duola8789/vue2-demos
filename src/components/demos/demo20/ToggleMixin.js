@@ -4,12 +4,12 @@
 export default {
   data() {
     return {
-      isVisible: false,
-    }
+      isVisible: false
+    };
   },
   computed: {
-    text () {
-      return this.isVisible ? '关闭' : '打开'
+    text() {
+      return this.isVisible ? '关闭' : '打开';
     }
   },
   mounted() {
@@ -19,5 +19,5 @@ export default {
     toggle() {
       this.isVisible = !this.isVisible;
     }
-  },
-}
+  }
+};

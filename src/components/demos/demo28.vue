@@ -1,43 +1,43 @@
 <template>
   <div>
     <h1>CSS圆周运动</h1>
-    <div class='outer-circle'>
-      <div class='circle'>Hello</div>
+    <div class="outer-circle">
+      <div class="circle">Hello</div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'demo28',
   props: [],
   data() {
     return {
-      value: '',
-    }
+      value: ''
+    };
   },
   mounted() {
     const users = [
       {id: 1, name: 'a'},
       {id: 2, name: 'a'},
       {id: 3, name: 'b'},
-      {id: 4, name: 'b'},
+      {id: 4, name: 'b'}
     ];
 
-    Array.prototype.unique = Array.prototype.unique || function () {
-      if (!Array.isArray(this)) {
-        return;
-      }
-      const set = new Set();
-      return users.filter(v => !set.has(v.name) && set.add(v.name)).map(v => v.name)
-    };
-    console.log(users.unique())
+    Array.prototype.unique =
+      Array.prototype.unique ||
+      function () {
+        if (!Array.isArray(this)) {
+          return;
+        }
+        const set = new Set();
+        return users.filter((v) => !set.has(v.name) && set.add(v.name)).map((v) => v.name);
+      };
+    console.log(users.unique());
   },
-  methods: {}
-  ,
+  methods: {},
   computed: {}
-}
+};
 </script>
 <style scoped>
 .outer-circle {
@@ -60,11 +60,10 @@ export default {
 }
 @keyframes rotate {
   from {
-    transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn)
+    transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn);
   }
   to {
-    transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn)
-
+    transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
   }
 }
 </style>

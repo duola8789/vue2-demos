@@ -8,45 +8,42 @@
 </template>
 
 <script>
-  import zip from 'zipcelx';
+import zip from 'zipcelx';
 
-  export default {
-    name: 'demo29',
-    props: [],
-    data() {
-      return {
-        data: [
-          {id: 1, name: 'a'},
-          {id: 2, name: 'a'},
-          {id: 3, name: 'b'},
-          {id: 4, name: 'b'},
-        ]
-      }
-    },
-    mounted() {
-    },
-    methods: {
-      output() {
-        const config = {
-          filename: 'hello',
-          sheet: {
-            data: [
-              [
-                { value: 'Income - Webshop', type: 'string'},
-                { value: 1000, type: 'number'}
-              ],
-              [
-                { value: 'hello'}
-              ]
-            ]
-          }
-        };
+export default {
+  name: 'demo29',
+  props: [],
+  data() {
+    return {
+      data: [
+        {id: 1, name: 'a'},
+        {id: 2, name: 'a'},
+        {id: 3, name: 'b'},
+        {id: 4, name: 'b'}
+      ]
+    };
+  },
+  mounted() {},
+  methods: {
+    output() {
+      const config = {
+        filename: 'hello',
+        sheet: {
+          data: [
+            [
+              {value: 'Income - Webshop', type: 'string'},
+              {value: 1000, type: 'number'}
+            ],
+            [{value: 'hello'}]
+          ]
+        }
+      };
 
-        zip(config)
-      }
-    },
-    computed: {}
-  }
+      zip(config);
+    }
+  },
+  computed: {}
+};
 </script>
 <style scoped>
 .outer-circle {
@@ -69,11 +66,10 @@
 }
 @keyframes rotate {
   from {
-    transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn)
+    transform: rotate(0turn) translateY(-150px) translateY(50%) rotate(1turn);
   }
   to {
-    transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn)
-
+    transform: rotate(1turn) translateY(-150px) translateY(50%) rotate(0turn);
   }
 }
 </style>

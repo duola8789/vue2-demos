@@ -3,11 +3,14 @@
     <h1>demo9 -- MOCK</h1>
     <p class="item">
       <span class="title">返回值</span>
-      <span>{{userName}}</span>
-      <span>{{userId}}</span>
+      <span>{{ userName }}</span>
+      <span>{{ userId }}</span>
     </p>
     <p class="item">
-      <label><span>用户ID:</span><input type="number" v-model="openId" @keyup.enter="getUser"></label>
+      <label>
+        <span>用户ID:</span>
+        <input type="number" v-model="openId" @keyup.enter="getUser" />
+      </label>
       <button @click="getUser">获取数据</button>
     </p>
   </div>
@@ -29,7 +32,7 @@ export default {
       userName: '',
       userId: '',
       obj: {}
-    }
+    };
   },
   computed: {},
   methods: {
@@ -44,7 +47,7 @@ export default {
         this.userName = data.user.name;
         this.userId = data.user.id;
         obj = data.user.obj;
-        console.log(data)
+        console.log(data);
       } catch (err) {
         this.userName = ERROR_TEXT;
         this.userId = '';
@@ -53,9 +56,7 @@ export default {
     }
   },
   components: {}
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -26,9 +26,9 @@ Vue.prototype.$eventBus = Vue.prototype.$eventBus || new Vue();
 
 // 一旦使用全局混入对象，将会影响到 所有之后创建的 Vue 实例。
 Vue.mixin({
-    created() {
-        // console.log('全局mixin');
-    }
+  created() {
+    // console.log('全局mixin');
+  }
 });
 
 // 全局过滤器
@@ -37,20 +37,18 @@ Vue.mixin({
 //   return value.charAt(0).slice(0, 1).toUpperCase() + value.slice(1)
 // });
 
-Object.keys(filters).forEach(key => {
-    Vue.filter(key, filters[key]);
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
 });
-
 
 /* eslint-disable no-new */
 new Vue({
-    el: '#app',
-    data: {
-        eventBus: new Vue()
-    },
-    router,
-    store,
-    components: {App},
-    template: '<App/>'
+  el: '#app',
+  data: {
+    eventBus: new Vue()
+  },
+  router,
+  store,
+  components: {App},
+  template: '<App/>'
 });
-

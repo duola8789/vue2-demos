@@ -1,19 +1,18 @@
 <template>
   <div>
-    <h1 draggable='true' id='dragSource'>可拖拽DIV</h1>
-    <div class='drag-zone' id='dragZone'></div>
+    <h1 draggable="true" id="dragSource">可拖拽DIV</h1>
+    <div class="drag-zone" id="dragZone"></div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'demo27',
   props: [],
   data() {
     return {
-      value: '',
-    }
+      value: ''
+    };
   },
   mounted() {
     const h1 = document.querySelector('#dragSource');
@@ -24,10 +23,10 @@ export default {
       e.dataTransfer.setData('Text', e.target.id);
     });
     h1.addEventListener('dragend', () => {
-      console.log('dragend')
+      console.log('dragend');
     });
     h1.addEventListener('drag', () => {
-      console.log('drag')
+      console.log('drag');
     });
     dragZone.addEventListener('dragenter', (e) => {
       console.log('dragenter');
@@ -44,11 +43,10 @@ export default {
       e.target.appendChild(document.getElementById(data));
       e.preventDefault();
     });
-
   },
   methods: {},
   computed: {}
-}
+};
 </script>
 <style scoped>
 .drag-zone {

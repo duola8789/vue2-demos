@@ -9,17 +9,16 @@ export default {
   name: 'demo38-1',
   props: [],
   data() {
-    return {
-    }
-  },
-}
+    return {};
+  }
+};
 </script>
 
 <style scoped>
-  .container {
-    width: 200px;
-    height: 50px;
-    background: gray;
-    margin: 0 auto;
-  }
+.container {
+  width: 200px;
+  height: 50px;
+  background: gray;
+  margin: 0 auto;
+}
 </style>

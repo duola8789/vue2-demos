@@ -12,7 +12,7 @@ import Tooltip from '@/components/demos/demo20/Tooltip';
 
 export default {
   data() {
-    return {}
+    return {};
   },
   mounted() {
     console.log('outer mounted');
@@ -21,10 +21,9 @@ export default {
   methods: {},
   components: {
     Modal,
-    Tooltip,
+    Tooltip
   }
-}
-
+};
 </script>
 
 <style scoped>
