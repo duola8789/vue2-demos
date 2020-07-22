@@ -1,19 +1,14 @@
 <template>
   <div>
     <h1>demo12 -- 表格展开</h1>
-    <el-table class="my-table" :data="tableData5" :row-class-name="setClassName" style="width: 100%;">
-      <el-table-column type="expand" v-if="canExpand">
-        <template slot-scope="props">
-          <el-form label-position="left" inline class="demo-table-expand" v-for="child in props.row.children" :key="child.id">
-            <el-form-item :label="child.id"></el-form-item>
-            <el-form-item :label="child.name"></el-form-item>
-            <el-form-item :label="child.desc"></el-form-item>
-          </el-form>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="商品 ID" prop="id"></el-table-column>
-      <el-table-column align="center" label="商品名称" prop="name"></el-table-column>
-      <el-table-column align="center" label="描述" prop="desc"></el-table-column>
+    <el-table class="my-table" :class="myClass" :data="tableData" :row-class-name="setClassName" style="width: 100%;">
+      <el-table-column
+        v-for="column of columns"
+        :key="column.prop"
+        align="center"
+        :label="column.name"
+        :prop="column.prop"
+      ></el-table-column>
     </el-table>
   </div>
 </template>
@@ -23,8 +18,14 @@ export default {
   name: 'demo12',
   data: function () {
     return {
+      myClass: '',
       canExpand: true,
-      tableData5: [
+      columns: [
+        {name: '商品 ID', prop: 'id'},
+        {name: '商品名称', prop: 'name'},
+        {name: '描述', prop: 'desc'}
+      ],
+      tableData: [
         {
           id: '111',
           name: '啊啊啊',
@@ -45,7 +46,6 @@ export default {
   computed: {},
   methods: {
     setClassName({row, index}) {
-      console.log(123);
       // 通过自己的逻辑返回一个class或者空
       return row.children ? '' : 'collapse';
     }
@@ -80,5 +80,18 @@ export default {
 }
 .collapse .el-table__expand-column .cell {
   display: none;
+}
+
+.ok .el-table__row:first-child {
+  animation: a linear 1s;
+}
+
+@keyframes a {
+  from {
+    color: #fff;
+  }
+  to {
+    color: red;
+  }
 }
 </style>

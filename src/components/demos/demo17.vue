@@ -21,7 +21,7 @@
       <div class="grid-item3 grid-item">
         <img class="img" :src="previewImg.src" />
         <div>
-          <div class="filter" :style="{transform: `translateY(${250 * progress * 0.01}px)`}" v-if="uploading"></div>
+          <div class="filter" :style="{transform: `translateY(${400 * progress * 0.01}px)`}" v-if="uploading"></div>
           <p class="progress-text">{{ progressText }}</p>
         </div>
       </div>
@@ -41,8 +41,20 @@
           </div>
         </div>
       </div>
+      <div class="grid-item5 grid-item">
+        <img class="img" :src="previewImg.src" />
+        <div class="filter" v-if="!uploading">
+          <div class="loader svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" height="150" width="110">
+              <circle cx="55" cy="55" r="50" fill="none" stroke="grey" stroke-width="8" stroke-linecap="round"/>
+              <circle cx="55" cy="55" r="50" fill="none" stroke="blue" stroke-width="8" stroke-linecap="round"/>
+            </svg>
+            <p class="progress-text progress-text-center">{{ progressText }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="outer">
+    <div class="outer" v-if="false">
       <div class="loader">
         <div class="loader-bg"></div>
         <div class="loader-container">
@@ -148,8 +160,8 @@ export default {
         withCredentials: false
       };
 
-      const url = 'http://up-z1.qiniup.com';
-      const domain = 'http://design.oldzhou.cn';
+      const url = 'http://upload-z1.qiniup.com';
+      const domain = 'http://image.oldzhou.cn';
       try {
         // 上传到七牛
         const res = await axios.post(url, this.getFromData(data), config);
@@ -166,7 +178,8 @@ export default {
       if (token) {
         return token;
       }
-      const url = 'http://139.199.125.59/demo/upload/certificate';
+      // 这个需要本地开启服务 pe-admin
+      const url = 'http://localhost:8099/api/upload/certificate';
       const res = await axios.get(url);
       token = res.data.ret.uploadToken;
       // cookie有效期10分钟
@@ -200,7 +213,7 @@ export default {
 }
 .grid-item {
   position: relative;
-  height: 250px;
+  height: 400px;
   line-height: 250px;
   overflow: hidden;
 }
@@ -243,7 +256,8 @@ export default {
   height: 20px;
   color: lavenderblush;
   font-size: 16px;
-  line-height: 1;
+  line-height: 20px;
+  margin: 0;
 }
 .progress-text-center {
   position: absolute;
