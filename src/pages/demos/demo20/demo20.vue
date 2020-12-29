@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Modal from '@/components/demos/demo20/Modal';
-import Tooltip from '@/components/demos/demo20/Tooltip';
+import Modal from '@/pages/demos/demo20/Modal';
+import Tooltip from '@/pages/demos/demo20/Tooltip';
 
 export default {
   data() {

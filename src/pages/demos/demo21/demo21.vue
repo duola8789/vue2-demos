@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Child from '@/components/demos/demo21/child';
-import Child2 from '@/components/demos/demo21/child2';
+import Child from '@/pages/demos/demo21/child';
+import Child2 from '@/pages/demos/demo21/child2';
 
 export default {
   data() {

@@ -2,7 +2,7 @@
  * Created by zh on 2018/3/21.
  */
 import Mock from 'mockjs';
-import {USER_API} from '@/components/demos/api.url';
+import {USER_API} from '@/pages/demos/api.url';
 
 const arr = ['chow', 'jay'];
 const name1 = 'f';

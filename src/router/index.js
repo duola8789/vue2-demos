@@ -1,20 +1,20 @@
 /* eslint-disable */
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
-import NotFound from '@/components/NotFound';
+import HelloWorld from '@/pages/HelloWorld';
+import NotFound from '@/pages/NotFound';
 
-import Demo14Child1 from '@/components/demos/demo14/demo14-1';
-import Demo14Child2 from '@/components/demos/demo14/demo14-2';
-import Demo14Child3 from '@/components/demos/demo14/demo14-3';
+import Demo14Child1 from '@/pages/demos/demo14/demo14-1';
+import Demo14Child2 from '@/pages/demos/demo14/demo14-2';
+import Demo14Child3 from '@/pages/demos/demo14/demo14-3';
 
-import Demo38Child1 from '@/components/demos/demo38/demo38-1';
-import Demo38Child2 from '@/components/demos/demo38/demo38-2';
+import Demo38Child1 from '@/pages/demos/demo38/demo38-1';
+import Demo38Child2 from '@/pages/demos/demo38/demo38-2';
 
 /**
  * 路由自动注册
  */
-const requireComponent = require.context('@/components/demos', true, /demo[0-9][0-9]?\.vue$/);
+const requireComponent = require.context('@/pages/demos', true, /demo[0-9][0-9]?\.vue$/);
 const routes = requireComponent.keys().map((fileName) => {
   // 获取组件配置
   const componentConfig = requireComponent(fileName);

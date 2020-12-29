@@ -2,7 +2,7 @@
  * Created by zh on 2018/3/21.
  */
 import Mock from 'mockjs';
-import {DEMO15_API} from '@/components/demos/api.url';
+import {DEMO15_API} from '@/pages/demos/api.url';
 
 let counter = 0;
 Mock.mock(new RegExp(DEMO15_API.result), {

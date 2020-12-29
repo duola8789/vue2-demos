@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import {DEMO15_API} from '@/components/demos/api.url';
+import {DEMO15_API} from '@/pages/demos/api.url';
 import debounce from 'lodash/debounce';
 import axios from 'axios';
 

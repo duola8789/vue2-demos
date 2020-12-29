@@ -18,7 +18,7 @@
 
 <script>
 import axios from 'axios';
-import {USER_API} from '@/components/demos/api.url';
+import {USER_API} from '@/pages/demos/api.url';
 
 const ERROR_TEXT = 'Sorry，出错了';
 const REMIND_TEXT = '请输入ID';

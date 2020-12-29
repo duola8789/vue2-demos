@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import demo1_1 from '@/components/demos/demo1-1';
+import demo1_1 from '@/pages/demos/demo1-1';
 const MESSAGE = 'This is demo 1 -- 基础',
   HIDE_TEXT = 'Hide text right',
   SHOW_TEXT = 'Show text right';
