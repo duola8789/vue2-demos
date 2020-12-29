@@ -55,7 +55,7 @@
     "husky": "^3.0.5",
     "jest": "^22.4.4",
     "jest-serializer-vue": "^0.3.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "lint-staged": "^9.2.5",
