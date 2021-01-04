@@ -101,7 +101,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-plugin-component": "^1.1.1",
     "element-theme-robo": "^0.1.2",
     "js-cookie": "^2.2.0",
