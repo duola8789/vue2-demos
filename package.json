@@ -69,7 +69,7 @@
     "postcss-loader": "^2.1.6",
     "postcss-url": "^7.3.2",
     "prettier": "^2.0.5",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-filters": "^3.1.0",
     "pug-loader": "^2.4.0",
     "qs": "^6.9.1",
