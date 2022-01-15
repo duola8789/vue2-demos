@@ -75,7 +75,7 @@
     "qs": "^6.9.1",
     "rimraf": "^2.6.0",
     "semver": "^5.6.0",
-    "shelljs": "^0.7.6",
+    "shelljs": "^0.8.5",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "url-loader": "^0.5.8",
     "video.js": "^7.7.5",
