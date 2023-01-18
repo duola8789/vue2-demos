@@ -3,7 +3,7 @@
  */
 import Vue from 'vue';
 
-import './element';
+// import './element';
 
 import MyLoading from './myLoading';
 import MyDatePicker from './myDatePicker';

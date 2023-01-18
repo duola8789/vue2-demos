@@ -9,6 +9,8 @@ import store from './store';
 
 import '@/style/reset.css';
 import '@/assets/icons/iconfont.css';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 import '@/filter';
 import '@/plugin';
@@ -18,6 +20,8 @@ import '@/directives';
 
 Vue.config.productionTip = false;
 Vue.prototype.$eventBus = Vue.prototype.$eventBus || new Vue();
+
+Vue.use(ElementUI);
 
 /* eslint-disable no-new */
 new Vue({

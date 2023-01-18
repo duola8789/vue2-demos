@@ -14,14 +14,7 @@
   "plugins": [
     "transform-vue-jsx",
     "transform-runtime",
-    "syntax-dynamic-import",
-    [
-      "component",
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
-      }
-    ]
+    "syntax-dynamic-import"
   ],
   "env": {
     "test": {
