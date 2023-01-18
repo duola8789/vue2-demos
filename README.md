@@ -1,6 +1,6 @@
 # vue-cli-learning
 
-> A Vue.js project
+Vue2入门级Demo，使用了VueCli，未使用TS
 
 ## Build Setup
 
